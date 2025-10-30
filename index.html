@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mobile Ticket</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>Lucy Beckham High School vs Wando Warriors</header>
+
+  <main>
+    <div class="upload-box" id="uploadBox" onclick="document.getElementById('fileInput').click()">
+      <span class="upload-text" id="uploadText">Tap to upload your image</span>
+      <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)" />
+    </div>
+  </main>
+
+  <footer>
+    <button>Use 1 Ticket</button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
