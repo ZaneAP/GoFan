@@ -1,8 +1,9 @@
 const uploadBox = document.getElementById('uploadBox');
 const fileInput = document.getElementById('fileInput');
-const scrollableBackground = document.getElementById('scrollableBackground');
+const scrollableContainer = document.getElementById('scrollableContainer');
+const uploadedImage = document.getElementById('uploadedImage');
 
-// Make the upload box clickable
+// Click upload box to open file picker
 uploadBox.addEventListener('click', () => fileInput.click());
 
 // Handle file selection
@@ -15,15 +16,15 @@ fileInput.addEventListener('change', function() {
     // Hide the upload box
     uploadBox.style.display = 'none';
 
-    // Show the scrollable background
-    scrollableBackground.style.display = 'block';
+    // Show scrollable container
+    scrollableContainer.style.display = 'block';
 
-    // Set uploaded image as background
-    scrollableBackground.style.backgroundImage = `url('${e.target.result}')`;
+    // Set uploaded image source
+    uploadedImage.src = e.target.result;
 
-    // Optional: background scroll is native via overflow
-    scrollableBackground.style.backgroundSize = 'cover';
-    scrollableBackground.style.backgroundPosition = 'center';
+    // Optional: make the image scrollable
+    uploadedImage.style.width = 'auto';
+    uploadedImage.style.height = 'auto';
   };
 
   reader.readAsDataURL(file);
