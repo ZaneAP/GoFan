@@ -25,14 +25,14 @@ header {
 
 header .header-image {
   width: 100%;
-  height: auto; /* natural height, keeps quality */
+  height: auto;
   display: block;
 }
 
-/* Main scroll area */
+/* Main scrollable area */
 main {
   flex: 1;
-  margin-top: 60px;   /* adjust to header height */
+  margin-top: 60px;   /* header height */
   margin-bottom: 70px; /* footer height */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -65,24 +65,24 @@ main {
   display: none;
 }
 
-/* Image wrapper */
-.image-wrapper {
-  position: relative;
+/* Scrollable wrapper for images */
+.scrollable-wrapper {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.image-wrapper img.uploaded {
+/* Uploaded and overlay images */
+.scrollable-wrapper img {
   max-width: 100%;
-  height: auto; /* preserve aspect ratio and quality */
+  height: auto;
   display: block;
 }
 
-.image-wrapper img.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  max-width: 100%;
-  height: auto; /* match uploaded image height */
+/* Optional: overlay positioned on top of uploaded image visually */
+.scrollable-wrapper img.overlay {
+  margin-top: -100%; /* pull overlay up over uploaded image */
   pointer-events: none;
   z-index: 5;
 }
