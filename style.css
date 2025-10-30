@@ -6,9 +6,9 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   overflow: hidden;
   background: #f5f5f5;
 }
@@ -29,11 +29,11 @@ header .header-image {
   display: block;
 }
 
-/* Main scrollable area */
+/* Main scroll area */
 main {
   flex: 1;
-  margin-top: 60px;   /* header height */
-  margin-bottom: 70px; /* footer height */
+  margin-top: 60px;   /* height of header */
+  margin-bottom: 70px; /* height of footer */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: flex;
@@ -65,21 +65,28 @@ main {
   display: none;
 }
 
-/* Scrollable wrapper */
-.scrollable-wrapper {
+/* Image wrapper */
+.image-wrapper {
+  position: relative;
   width: 100%;
-  position: relative; /* for overlay positioning */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #eaeaea;
+  margin-top: 10px;
+  max-height: 80vh;
 }
 
-/* Uploaded image */
-.scrollable-wrapper img.uploaded {
-  width: 100%;
-  height: auto;
+.image-wrapper img.uploaded {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
   display: block;
 }
 
-/* Overlay image positioned on top of uploaded image */
-.scrollable-wrapper img.overlay {
+.image-wrapper img.overlay {
   position: absolute;
   top: 0;
   left: 0;
