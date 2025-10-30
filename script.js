@@ -4,12 +4,22 @@ function previewImage(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
       const uploadBox = document.getElementById('uploadBox');
-      uploadBox.innerHTML = `
-        <div class="image-wrapper">
-          <img src="${e.target.result}" alt="Uploaded Image" class="uploaded-image">
-          <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true" alt="Overlay" class="overlay-image">
-        </div>
-      `;
+      
+      uploadBox.innerHTML = `<div class="image-wrapper">
+        <img src="${e.target.result}" alt="Uploaded Image" class="uploaded-image">
+        <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true" alt="Overlay" class="overlay-image">
+      </div>`;
+
+      const uploaded = uploadBox.querySelector('.uploaded-image');
+      const overlay = uploadBox.querySelector('.overlay-image');
+
+      uploaded.onload = () => {
+        overlay.style.height = uploaded.offsetHeight + 'px';
+      };
+
+      window.addEventListener('resize', () => {
+        overlay.style.height = uploaded.offsetHeight + 'px';
+      });
     };
     reader.readAsDataURL(file);
   }
