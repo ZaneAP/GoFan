@@ -19,9 +19,13 @@ header {
   z-index: 20;
 }
 
+header .header-wrapper {
+  width: 100%;
+}
+
 header .header-image {
   width: 100%;
-  height: auto; /* keeps full header visible */
+  height: auto; /* ensures header fully visible, no cropping */
   display: block;
 }
 
@@ -33,14 +37,13 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 0; /* scroll starts immediately below header */
   padding-left: 10px;
   padding-right: 10px;
-  margin-top: 0;
-  margin-bottom: 70px; /* space for footer */
+  margin-top: 0; /* scroll starts below header naturally */
+  margin-bottom: 70px; /* footer height */
 }
 
-/* Upload container - blank dashed box */
+/* Upload container */
 .upload-container {
   width: 100%;
   max-width: 600px;
