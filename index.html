@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrollable Uploaded Image</title>
+  <title>Mobile Ticket</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,14 +13,11 @@
 </header>
 
 <main>
-  <div class="upload-container" id="uploadContainer">
-    <div id="uploadBox">
-      <p>Tap here to upload an image</p>
-      <input type="file" id="fileInput" accept="image/*">
-    </div>
-
-    <div id="scrollableContainer" style="display: none;">
-      <img id="uploadedImage" src="" alt="Uploaded Image" />
+  <div class="upload-container">
+    <label class="placeholder" for="fileInput">Tap to upload your image</label>
+    <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
+    <div class="image-wrapper" id="imageWrapper">
+      <!-- Uploaded + overlay images go here -->
     </div>
   </div>
 </main>
