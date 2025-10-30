@@ -9,14 +9,12 @@
 <body>
 
 <header>
-  <div class="header-wrapper">
-    <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true" alt="Header" class="header-image">
-  </div>
+  <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true" alt="Header" class="header-image">
 </header>
 
 <main>
-  <div class="upload-container" id="uploadContainer">
-    <label class="placeholder" for="fileInput">Tap to upload your image</label>
+  <div class="upload-container" id="uploadContainer" onclick="document.getElementById('fileInput').click()">
+    <label class="placeholder">Tap to upload your image</label>
     <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
   </div>
 
