@@ -21,7 +21,7 @@ header {
 
 header .header-image {
   width: 100%;
-  height: auto; /* keeps full header visible */
+  height: auto;
   display: block;
 }
 
@@ -34,8 +34,8 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  margin-top: 0; /* scroll starts below header */
-  margin-bottom: 70px; /* space for footer */
+  margin-top: 0;
+  margin-bottom: 70px; /* footer height */
 }
 
 /* Upload container */
@@ -127,10 +127,11 @@ footer button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer; /* allows click to change */
 }
 
 .fullscreen-container img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* scales without cropping */
+  object-fit: contain;
 }
