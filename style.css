@@ -21,7 +21,7 @@ header {
 
 header .header-image {
   width: 100%;
-  height: auto; /* ensures header is never cropped */
+  height: auto; /* keeps full header visible */
   display: block;
 }
 
@@ -33,20 +33,39 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 10px;
-  margin-top: 0; /* scrolling starts directly below header */
+  padding-top: 0; /* scroll starts immediately below header */
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 0;
+  margin-bottom: 70px; /* space for footer */
 }
 
-/* Invisible upload input */
-.upload-placeholder {
-  display: none; /* invisible, triggers upload only */
+/* Upload container - blank dashed box */
+.upload-container {
+  width: 100%;
+  max-width: 600px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  cursor: pointer;
 }
 
+.upload-container .placeholder {
+  color: #555;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Hide input visually */
 #fileInput {
   display: none;
 }
 
-/* Scroll container for images */
+/* Scroll container */
 .scroll-container {
   width: 100%;
   max-width: 600px;
