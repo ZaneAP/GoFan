@@ -9,8 +9,8 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   background: #f5f5f5;
+  overflow: hidden;
 }
 
 /* Header */
@@ -29,16 +29,16 @@ header .header-image {
   display: block;
 }
 
-/* Main scroll area */
+/* Main */
 main {
   flex: 1;
-  margin-top: 60px;   /* height of header */
-  margin-bottom: 70px; /* height of footer */
+  margin-top: 60px;   /* header height */
+  margin-bottom: 70px; /* footer height */
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   display: flex;
-  justify-content: center;
-  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
 }
 
 .upload-container {
@@ -49,45 +49,55 @@ main {
   align-items: center;
 }
 
-.placeholder {
+/* Upload box */
+.upload-box {
   width: 100%;
-  padding: 20px;
-  text-align: center;
-  font-size: 16px;
-  color: #555;
+  padding: 30px;
   border: 2px dashed #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
+  background: #fafafa;
+  text-align: center;
   cursor: pointer;
-  margin-bottom: 10px;
+  transition: background 0.2s, border-color 0.2s;
+  position: relative;
 }
 
-#fileInput {
+.upload-box:hover {
+  background: #f0f0f0;
+  border-color: #999;
+}
+
+.upload-box input[type="file"] {
   display: none;
 }
 
-/* Image wrapper */
-.image-wrapper {
-  position: relative;
+.upload-text {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Image preview */
+.image-preview {
+  margin-top: 15px;
   width: 100%;
+  max-height: 80vh;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #eaeaea;
-  margin-top: 10px;
-  min-height: 300px; /* prevents disappearing */
-  max-height: 80vh;
 }
 
-.image-wrapper img.uploaded {
+.image-preview img.uploaded {
   max-width: 100%;
   max-height: 80vh;
   object-fit: contain;
   display: block;
 }
 
-.image-wrapper img.overlay {
+.image-preview img.overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -119,7 +129,7 @@ footer button {
   background: #323232;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 17px;
   font-weight: 500;
   cursor: pointer;
