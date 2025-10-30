@@ -12,6 +12,7 @@ body {
   background: #f5f5f5;
 }
 
+/* Header */
 header {
   position: fixed;
   top: 0;
@@ -25,6 +26,7 @@ header img {
   display: block;
 }
 
+/* Main area */
 main {
   flex: 1;
   margin-top: 60px;
@@ -40,9 +42,6 @@ main {
   max-width: 600px;
   height: 60vh;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* Upload box */
@@ -63,7 +62,7 @@ main {
 }
 
 /* Scrollable uploaded image */
-#scrollableBackground {
+#scrollableContainer {
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -71,9 +70,13 @@ main {
   top: 0;
   left: 0;
   border-radius: 8px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; /* fill container, preserve ratio */
+}
+
+#scrollableContainer img {
+  display: block;
+  max-width: none; /* allow scrolling if image is larger */
+  width: auto;
+  height: auto;
 }
 
 /* Footer */
