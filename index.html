@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile Ticket</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
 <header>
   <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true" alt="Header Image" class="header-image">
 </header>
 
 <main>
   <div class="upload-container" id="uploadContainer">
-    <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
     <div class="placeholder" onclick="document.getElementById('fileInput').click()">
       Tap to upload your image
     </div>
+    <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
     <div class="image-wrapper" id="imageWrapper">
       <!-- Uploaded image + overlay will appear here -->
     </div>
@@ -29,5 +19,3 @@
 </footer>
 
 <script src="script.js"></script>
-</body>
-</html>
