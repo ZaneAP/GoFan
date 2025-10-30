@@ -76,6 +76,7 @@ main {
   border-radius: 6px;
   background: #eaeaea;
   margin-top: 10px;
+  min-height: 300px; /* prevents disappearing */
   max-height: 80vh;
 }
 
