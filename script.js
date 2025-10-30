@@ -2,6 +2,10 @@ function previewImage(event) {
   const file = event.target.files[0];
   if (!file) return;
 
+  // Hide upload button
+  const uploadLabel = document.getElementById('uploadLabel');
+  uploadLabel.classList.add('hidden');
+
   const reader = new FileReader();
   reader.onload = function(e) {
     const wrapper = document.getElementById('imageWrapper');
