@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Upload with Overlay</title>
+  <title>Clean Image Upload</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,9 +14,11 @@
 
 <main>
   <div class="upload-container">
-    <label class="placeholder" for="fileInput">Tap to upload your image</label>
-    <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
-    <div class="image-wrapper" id="imageWrapper">
+    <div class="upload-box" id="uploadBox">
+      <span class="upload-text">Tap to upload your image</span>
+      <input type="file" id="fileInput" accept="image/*">
+    </div>
+    <div class="image-preview" id="imagePreview">
       <!-- Uploaded image + overlay will appear here -->
     </div>
   </div>
