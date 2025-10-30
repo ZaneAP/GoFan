@@ -5,30 +5,34 @@ function previewImage(event) {
   const reader = new FileReader();
   reader.onload = function(e) {
     const wrapper = document.getElementById('scrollableWrapper');
+    
+    // Clear previous images
+    wrapper.innerHTML = '';
 
-    // Uploaded image
+    // Create uploaded image
     const uploadedImg = new Image();
     uploadedImg.src = e.target.result;
     uploadedImg.classList.add('uploaded');
 
-    // Overlay image
+    // Create overlay image
     const overlayImg = new Image();
     overlayImg.src = 'https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true';
     overlayImg.classList.add('overlay');
 
-    // Wait until uploaded image loads to adjust overlay if needed
+    // Wait for uploaded image to load to set wrapper height
     uploadedImg.onload = () => {
-      overlayImg.style.width = uploadedImg.offsetWidth + 'px';
+      wrapper.style.height = uploadedImg.offsetHeight + 'px';
+      overlayImg.style.height = uploadedImg.offsetHeight + 'px';
     };
 
-    // Clear wrapper and append both images
-    wrapper.innerHTML = '';
+    // Append images
     wrapper.appendChild(uploadedImg);
     wrapper.appendChild(overlayImg);
 
-    // Update overlay width on window resize
+    // Update overlay height on window resize
     window.addEventListener('resize', () => {
-      overlayImg.style.width = uploadedImg.offsetWidth + 'px';
+      overlayImg.style.height = uploadedImg.offsetHeight + 'px';
+      wrapper.style.height = uploadedImg.offsetHeight + 'px';
     });
   };
   reader.readAsDataURL(file);
