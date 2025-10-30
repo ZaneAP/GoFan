@@ -1,31 +1,25 @@
-const uploadBox = document.getElementById('uploadBox');
-const fileInput = document.getElementById('fileInput');
-const scrollableContainer = document.getElementById('scrollableContainer');
-const uploadedImage = document.getElementById('uploadedImage');
-
-// Click upload box to open file picker
-uploadBox.addEventListener('click', () => fileInput.click());
-
-// Handle file selection
-fileInput.addEventListener('change', function() {
-  const file = this.files[0];
+function previewImage(event) {
+  const file = event.target.files[0];
   if (!file) return;
 
   const reader = new FileReader();
   reader.onload = function(e) {
-    // Hide the upload box
-    uploadBox.style.display = 'none';
+    const wrapper = document.getElementById('imageWrapper');
+    wrapper.innerHTML = ''; // clear previous images
 
-    // Show scrollable container
-    scrollableContainer.style.display = 'block';
+    // Uploaded image
+    const uploaded = document.createElement('img');
+    uploaded.src = e.target.result;
+    uploaded.classList.add('uploaded');
 
-    // Set uploaded image source
-    uploadedImage.src = e.target.result;
+    // Overlay image
+    const overlay = document.createElement('img');
+    overlay.src = 'https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true';
+    overlay.classList.add('overlay');
 
-    // Optional: make the image scrollable
-    uploadedImage.style.width = 'auto';
-    uploadedImage.style.height = 'auto';
+    // Append both
+    wrapper.appendChild(uploaded);
+    wrapper.appendChild(overlay);
   };
-
   reader.readAsDataURL(file);
-});
+}
