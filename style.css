@@ -19,8 +19,8 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 20;
   height: 60px;
-  z-index: 10;
   background: #fff;
 }
 
@@ -38,15 +38,19 @@ main {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0 10px;
 }
 
+/* Upload container */
 .upload-container {
   width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .placeholder {
@@ -58,44 +62,40 @@ main {
   border: 2px dashed #ccc;
   border-radius: 6px;
   cursor: pointer;
-  margin-bottom: 10px;
   transition: opacity 0.3s;
+}
+
+.placeholder.hidden {
+  display: none;
 }
 
 #fileInput {
   display: none;
 }
 
-/* Hide upload label when .hidden */
-.placeholder.hidden {
-  opacity: 0;
-  pointer-events: none;
-  height: 0;
-  margin: 0;
-}
-
-/* Wrapper for uploaded + overlay images */
-.image-wrapper {
+/* Scroll container for images */
+.scroll-container {
   position: relative;
   width: 100%;
+  max-width: 600px;
 }
 
-/* Uploaded image */
-.image-wrapper img.uploaded {
+/* Scrolling overlay image */
+.scroll-container img.overlay {
   width: 100%;
   height: auto;
   display: block;
+  margin-bottom: 0; /* optional spacing */
+  position: relative; /* scrolls naturally */
+  z-index: 5;
 }
 
-/* Overlay image */
-.image-wrapper img.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Uploaded image */
+.scroll-container img.uploaded {
   width: 100%;
   height: auto;
-  pointer-events: none;
-  z-index: 5;
+  display: block;
+  margin-top: -4px; /* small fix to remove gap if needed */
 }
 
 /* Footer */
@@ -110,7 +110,7 @@ footer {
   align-items: center;
   justify-content: center;
   padding: 0 16px;
-  z-index: 10;
+  z-index: 20;
 }
 
 footer button {
