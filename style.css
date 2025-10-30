@@ -19,28 +19,29 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
   z-index: 20;
   background: #fff;
 }
 
 header .header-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* scale properly */
+  display: block;
 }
 
 /* Main scrollable area */
 main {
   flex: 1;
-  margin-top: 60px;   /* header height */
+  margin-top: auto; /* we’ll set padding below to account for header height */
   margin-bottom: 70px; /* footer height */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 10px;
+  padding-top: 60px; /* space for header */
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /* Upload container */
@@ -62,7 +63,6 @@ main {
   border: 2px dashed #ccc;
   border-radius: 6px;
   cursor: pointer;
-  transition: opacity 0.3s;
 }
 
 .placeholder.hidden {
@@ -73,9 +73,8 @@ main {
   display: none;
 }
 
-/* Scroll container for images */
+/* Scroll container */
 .scroll-container {
-  position: relative;
   width: 100%;
   max-width: 600px;
 }
