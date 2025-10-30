@@ -20,7 +20,7 @@ header {
   left: 0;
   right: 0;
   z-index: 10;
-  background-color: #fff; /* fallback */
+  background-color: #fff;
   border-bottom: 1px solid #ddd;
   padding: 0;
 }
@@ -34,16 +34,14 @@ header .header-image {
 /* MAIN CONTENT */
 main {
   flex: 1;
-  margin-top: 60px; /* adjust if header is taller */
+  margin-top: 60px;
   margin-bottom: 70px;
   overflow-y: auto;
-  overflow-x: hidden;
   background-color: #fafafa;
 }
 
 .upload-box {
   width: 100%;
-  height: auto;
   min-height: 60vh;
   background-color: #eaeaea;
   border-top: 2px dashed #ccc;
@@ -54,8 +52,15 @@ main {
   flex-direction: column;
   cursor: pointer;
   text-align: center;
-  overflow: auto; /* scrollable */
-  position: relative; /* for overlay */
+  overflow: auto;
+  position: relative;
+}
+
+.upload-box .image-wrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .upload-box img.uploaded-image {
@@ -70,7 +75,7 @@ main {
   left: 0;
   width: 100%;
   height: auto;
-  pointer-events: none; /* allows click through */
+  pointer-events: none;
   z-index: 5;
 }
 
