@@ -59,10 +59,19 @@ main {
   border-radius: 6px;
   cursor: pointer;
   margin-bottom: 10px;
+  transition: opacity 0.3s;
 }
 
 #fileInput {
   display: none;
+}
+
+/* Hide upload label when .hidden */
+.placeholder.hidden {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  margin: 0;
 }
 
 /* Wrapper for uploaded + overlay images */
@@ -84,8 +93,7 @@ main {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   pointer-events: none;
   z-index: 5;
 }
