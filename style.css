@@ -1,5 +1,10 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -25,7 +30,7 @@ main {
   margin-top: 60px;
   margin-bottom: 70px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 10px;
 }
@@ -33,11 +38,14 @@ main {
 .upload-container {
   width: 100%;
   max-width: 600px;
+  height: 60vh;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
+/* Upload box */
 #uploadBox {
   width: 100%;
   border: 2px dashed #aaa;
@@ -45,30 +53,27 @@ main {
   text-align: center;
   cursor: pointer;
   border-radius: 8px;
-  margin-bottom: 15px;
   background: #fafafa;
-  position: relative;
+  position: absolute;
+  z-index: 10;
 }
 
 #uploadBox input[type="file"] {
   display: none;
 }
 
-#imagePreview {
+/* Scrollable uploaded image */
+#scrollableBackground {
   width: 100%;
-  max-height: 60vh;
+  height: 100%;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
   border-radius: 8px;
-  overflow: hidden;
-  background: #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#imagePreview img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* fill container, preserve ratio */
 }
 
 /* Footer */
