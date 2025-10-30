@@ -5,34 +5,31 @@ function previewImage(event) {
   const reader = new FileReader();
   reader.onload = function(e) {
     const wrapper = document.getElementById('scrollableWrapper');
-    
-    // Clear previous images
-    wrapper.innerHTML = '';
+    wrapper.innerHTML = ''; // clear previous images
 
     // Create uploaded image
-    const uploadedImg = new Image();
-    uploadedImg.src = e.target.result;
-    uploadedImg.classList.add('uploaded');
+    const uploaded = document.createElement('img');
+    uploaded.src = e.target.result;
+    uploaded.classList.add('uploaded');
 
     // Create overlay image
-    const overlayImg = new Image();
-    overlayImg.src = 'https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true';
-    overlayImg.classList.add('overlay');
+    const overlay = document.createElement('img');
+    overlay.src = 'https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true';
+    overlay.classList.add('overlay');
 
     // Wait for uploaded image to load to set wrapper height
-    uploadedImg.onload = () => {
-      wrapper.style.height = uploadedImg.offsetHeight + 'px';
-      overlayImg.style.height = uploadedImg.offsetHeight + 'px';
+    uploaded.onload = () => {
+      wrapper.style.height = uploaded.offsetHeight + 'px';
+      overlay.style.height = uploaded.offsetHeight + 'px';
     };
 
-    // Append images
-    wrapper.appendChild(uploadedImg);
-    wrapper.appendChild(overlayImg);
+    wrapper.appendChild(uploaded);
+    wrapper.appendChild(overlay);
 
-    // Update overlay height on window resize
+    // Update overlay on resize
     window.addEventListener('resize', () => {
-      overlayImg.style.height = uploadedImg.offsetHeight + 'px';
-      wrapper.style.height = uploadedImg.offsetHeight + 'px';
+      overlay.style.height = uploaded.offsetHeight + 'px';
+      wrapper.style.height = uploaded.offsetHeight + 'px';
     });
   };
   reader.readAsDataURL(file);
