@@ -7,19 +7,8 @@ function previewImage(event) {
     const wrapper = document.getElementById('imageWrapper');
     wrapper.innerHTML = `
       <img src="${e.target.result}" class="uploaded" alt="Uploaded Image">
-      <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true" class="overlay" alt="Overlay Image">
+      <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true" class="overlay" alt="Overlay">
     `;
-
-    const uploaded = wrapper.querySelector('.uploaded');
-    const overlay = wrapper.querySelector('.overlay');
-
-    function resizeOverlay() {
-      overlay.style.width = uploaded.offsetWidth + 'px';
-      overlay.style.height = uploaded.offsetHeight + 'px';
-    }
-
-    uploaded.onload = resizeOverlay;
-    window.addEventListener('resize', resizeOverlay);
   };
   reader.readAsDataURL(file);
 }
