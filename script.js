@@ -2,21 +2,11 @@ function previewImage(event) {
   const file = event.target.files[0];
   if (!file) return;
 
-  // Remove upload container completely
-  const uploadContainer = document.getElementById('uploadContainer');
-  uploadContainer.style.display = 'none';
+  const scrollContainer = document.getElementById('scrollContainer');
 
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const scrollContainer = document.getElementById('scrollContainer');
+  const uploaded = new Image();
+  uploaded.src = URL.createObjectURL(file); // faster than FileReader
+  uploaded.classList.add('uploaded');
 
-    // Create uploaded image
-    const uploaded = new Image();
-    uploaded.src = e.target.result;
-    uploaded.classList.add('uploaded');
-
-    // Append uploaded image after overlay
-    scrollContainer.appendChild(uploaded);
-  };
-  reader.readAsDataURL(file);
+  scrollContainer.appendChild(uploaded);
 }
