@@ -5,10 +5,22 @@ function previewImage(event) {
   const reader = new FileReader();
   reader.onload = function(e) {
     const wrapper = document.getElementById('imageWrapper');
-    wrapper.innerHTML = `
-      <img src="${e.target.result}" class="uploaded" alt="Uploaded Image">
-      <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true" class="overlay" alt="Overlay">
-    `;
+    wrapper.innerHTML = ''; // clear previous images
+
+    // Uploaded image
+    const uploadedImg = document.createElement('img');
+    uploadedImg.src = e.target.result;
+    uploadedImg.alt = 'Uploaded Image';
+    uploadedImg.classList.add('uploaded');
+
+    // Overlay image
+    const overlayImg = document.createElement('img');
+    overlayImg.src = 'https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true';
+    overlayImg.alt = 'Overlay';
+    overlayImg.classList.add('overlay');
+
+    wrapper.appendChild(uploadedImg);
+    wrapper.appendChild(overlayImg);
   };
   reader.readAsDataURL(file);
 }
