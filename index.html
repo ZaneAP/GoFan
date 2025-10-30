@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobile Ticket</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true" alt="Game Header" class="header-image">
-  </header>
 
-  <main>
-    <div class="upload-box" id="uploadBox" onclick="document.getElementById('fileInput').click()">
-      <span class="upload-text" id="uploadText">Tap to upload your image</span>
-      <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)" />
-      <div class="image-wrapper" id="imageWrapper">
-        <!-- Uploaded + overlay images will appear here -->
-      </div>
+<header>
+  <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true" alt="Header Image" class="header-image">
+</header>
+
+<main>
+  <div class="upload-container" id="uploadContainer">
+    <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
+    <div class="placeholder" onclick="document.getElementById('fileInput').click()">
+      Tap to upload your image
     </div>
-  </main>
+    <div class="image-wrapper" id="imageWrapper">
+      <!-- Uploaded image + overlay will appear here -->
+    </div>
+  </div>
+</main>
 
-  <footer>
-    <button>Use 1 ticket</button>
-  </footer>
+<footer>
+  <button>Use 1 ticket</button>
+</footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
