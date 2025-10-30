@@ -6,12 +6,12 @@ function previewImage(event) {
   reader.onload = function(e) {
     const wrapper = document.getElementById('imageWrapper');
     wrapper.innerHTML = `
-      <img src="${e.target.result}" alt="Uploaded Image" class="uploaded-image">
-      <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true" alt="Overlay" class="overlay-image">
+      <img src="${e.target.result}" class="uploaded">
+      <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true" class="overlay">
     `;
 
-    const uploaded = wrapper.querySelector('.uploaded-image');
-    const overlay = wrapper.querySelector('.overlay-image');
+    const uploaded = wrapper.querySelector('.uploaded');
+    const overlay = wrapper.querySelector('.overlay');
 
     function resizeOverlay() {
       overlay.style.width = uploaded.offsetWidth + 'px';
