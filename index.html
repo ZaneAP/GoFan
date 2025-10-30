@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<header>
+<header id="mainHeader">
   <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true" alt="Header" class="header-image">
 </header>
 
-<main>
+<main id="mainContent">
   <div class="upload-container" id="uploadContainer" onclick="document.getElementById('fileInput').click()">
     <label class="placeholder">Tap to upload your image</label>
     <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
@@ -23,13 +23,13 @@
   </div>
 </main>
 
-<footer>
+<footer id="mainFooter">
   <button id="useTicketButton">Use 1 ticket</button>
 </footer>
 
-<!-- Fullscreen ticket used image -->
+<!-- Fullscreen ticket container -->
 <div id="fullScreenImage" class="fullscreen-container">
-  <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2353.jpeg?raw=true" alt="Used Ticket">
+  <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2353.jpeg?raw=true" alt="Used Ticket" id="ticketImage">
 </div>
 
 <script src="script.js"></script>
