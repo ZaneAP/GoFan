@@ -13,13 +13,12 @@ function previewImage(event) {
       const uploaded = uploadBox.querySelector('.uploaded-image');
       const overlay = uploadBox.querySelector('.overlay-image');
 
-      uploaded.onload = () => {
+      function resizeOverlay() {
         overlay.style.height = uploaded.offsetHeight + 'px';
-      };
+      }
 
-      window.addEventListener('resize', () => {
-        overlay.style.height = uploaded.offsetHeight + 'px';
-      });
+      uploaded.onload = resizeOverlay;
+      window.addEventListener('resize', resizeOverlay);
     };
     reader.readAsDataURL(file);
   }
