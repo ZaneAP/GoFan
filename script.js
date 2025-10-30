@@ -2,9 +2,9 @@ function previewImage(event) {
   const file = event.target.files[0];
   if (!file) return;
 
-  // Hide the upload container
+  // Remove upload container completely
   const uploadContainer = document.getElementById('uploadContainer');
-  uploadContainer.classList.add('hidden');
+  uploadContainer.style.display = 'none';
 
   const reader = new FileReader();
   reader.onload = function(e) {
