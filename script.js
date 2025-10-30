@@ -1,6 +1,6 @@
 const uploadBox = document.getElementById('uploadBox');
 const fileInput = document.getElementById('fileInput');
-const imagePreview = document.getElementById('imagePreview');
+const scrollableBackground = document.getElementById('scrollableBackground');
 
 // Make the upload box clickable
 uploadBox.addEventListener('click', () => fileInput.click());
@@ -12,16 +12,18 @@ fileInput.addEventListener('change', function() {
 
   const reader = new FileReader();
   reader.onload = function(e) {
-    // Clear previous image
-    imagePreview.innerHTML = '';
+    // Hide the upload box
+    uploadBox.style.display = 'none';
 
-    // Create image element
-    const img = document.createElement('img');
-    img.src = e.target.result;
-    img.alt = 'Uploaded Image';
+    // Show the scrollable background
+    scrollableBackground.style.display = 'block';
 
-    // Add to preview container
-    imagePreview.appendChild(img);
+    // Set uploaded image as background
+    scrollableBackground.style.backgroundImage = `url('${e.target.result}')`;
+
+    // Optional: background scroll is native via overflow
+    scrollableBackground.style.backgroundSize = 'cover';
+    scrollableBackground.style.backgroundPosition = 'center';
   };
 
   reader.readAsDataURL(file);
