@@ -107,17 +107,23 @@ footer button:hover {
   background: #555;
 }
 
-/* Ticket section (scrollable) */
+/* Fullscreen ticket (no header) */
 .ticket-section {
-  display: flex;
-  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
   overflow-y: auto;
-  height: 100vh;
-  background: #fff;
   -webkit-overflow-scrolling: touch;
+  z-index: 100;
 }
 
-.ticket-img {
+.ticket-section img {
   width: 100%;
   height: auto;
   display: block;
@@ -128,12 +134,15 @@ footer button:hover {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 30px;
 }
 
 .centered-container img {
-  width: 100%;
-  max-width: 600px;
+  width: 90%; /* slight crop on both sides */
+  max-width: 550px;
   height: auto;
+  margin-top: -10px; /* move image up slightly */
+  border-radius: 6px;
   display: block;
 }
