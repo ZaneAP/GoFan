@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GoFan Ticket UI</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Ticket</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header id="mainHeader">
-    <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true" alt="Header" class="header-img">
-  </header>
 
-  <main id="content">
-    <div id="uploadSection" class="upload-section" onclick="document.getElementById('imageUpload').click();">
-      <input type="file" id="imageUpload" accept="image/*" style="display:none;">
-      <button id="ticketButton">GET TICKET</button>
-    </div>
+<header id="mainHeader">
+  <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true" alt="Header" class="header-image">
+</header>
 
-    <div id="centerImageContainer" class="hidden">
-      <img id="centerImage" src="https://github.com/ZaneAP/GoFan/blob/main/1-e459d354.jpeg?raw=true" alt="Center Image">
-    </div>
+<main id="mainContent">
+  <div class="upload-container" id="uploadContainer" onclick="document.getElementById('fileInput').click()">
+    <label class="placeholder">Tap to upload your image</label>
+    <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
+  </div>
 
-    <div id="fullscreenContainer" class="hidden">
-      <img id="fullscreenImage" src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2353%20(1).jpeg?raw=true" alt="Full Screen Image">
-    </div>
-  </main>
+  <div class="scroll-container" id="scrollContainer">
+    <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2349.jpeg?raw=true" class="overlay" alt="Overlay Image">
+  </div>
+</main>
 
-  <footer id="footer">
-    <button id="footerButton">Pass</button>
-  </footer>
+<footer id="mainFooter">
+  <button id="useTicketButton">Use 1 ticket</button>
+</footer>
 
-  <script src="script.js"></script>
+<!-- Scrollable full-screen section (now includes header) -->
+<section id="ticketSection" class="ticket-section" style="display: none;">
+  <div class="scroll-container">
+    <img src="https://github.com/ZaneAP/GoFan/blob/main/IMG_2353%20(1).jpeg?raw=true" alt="Ticket Image" id="ticketImage" class="ticket-img">
+  </div>
+</section>
+
+<script src="script.js"></script>
 </body>
 </html>
