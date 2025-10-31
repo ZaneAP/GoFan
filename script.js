@@ -21,8 +21,10 @@ document.getElementById('useTicketButton').addEventListener('click', () => {
   document.getElementById('mainContent').style.display = 'none';
   document.getElementById('mainFooter').style.display = 'none';
 
-  // Show fullscreen ticket
+  // Show fullscreen ticket (new image)
   const fullScreen = document.getElementById('fullScreenImage');
+  const ticketImage = document.getElementById('ticketImage');
+  ticketImage.src = "https://github.com/ZaneAP/GoFan/blob/main/IMG_2353%20(1).jpeg?raw=true";
   fullScreen.style.display = 'flex';
 });
 
@@ -46,6 +48,6 @@ document.getElementById('fullScreenImage').addEventListener('click', () => {
     </div>
   `;
 
-  // Optionally restore footer if desired
+  // Restore footer
   document.getElementById('mainFooter').style.display = 'flex';
 });
