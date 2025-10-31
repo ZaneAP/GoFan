@@ -1,86 +1,139 @@
-body, html {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow-x: hidden;
-  background-color: #fff;
 }
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+/* Header */
 header {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 10;
+  background: #fff;
 }
 
-.header-img {
+header .header-image {
   width: 100%;
   height: auto;
-  object-fit: contain;
   display: block;
 }
 
+/* Main section */
 main {
-  width: 100%;
-  text-align: center;
-  position: relative;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 70px;
 }
 
-.upload-section {
+/* Upload box */
+.upload-container {
   width: 100%;
+  max-width: 600px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40vh;
+  margin: 20px 0;
   cursor: pointer;
 }
 
-button {
-  background-color: #004aad;
-  color: white;
-  border: none;
-  padding: 15px 25px;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
+.upload-container .placeholder {
+  color: #555;
+  font-size: 16px;
+  text-align: center;
 }
 
-.hidden {
+#fileInput {
   display: none;
 }
 
-#fullscreenContainer {
-  position: relative;
+/* Scrollable overlay */
+.scroll-container {
   width: 100%;
-  height: calc(100vh - 120px);
-  overflow-y: scroll;
+  max-width: 600px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-#fullscreenImage {
+.scroll-container img.overlay,
+.scroll-container img.uploaded {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
 }
 
-#centerImageContainer {
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  z-index: 20;
+}
+
+footer button {
+  width: 100%;
+  height: 50px;
+  background: #323232;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+footer button:hover {
+  background: #555;
+}
+
+/* Ticket section (scrollable) */
+.ticket-section {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100vh;
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ticket-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Centered final image */
+.centered-container {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
 }
 
-#centerImage {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-footer {
-  position: relative;
+.centered-container img {
   width: 100%;
-  padding: 10px 0;
-  text-align: center;
-  background-color: #004aad;
-  color: white;
+  max-width: 600px;
+  height: auto;
+  display: block;
 }
