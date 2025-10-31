@@ -1,21 +1,44 @@
-const ticketButton = document.getElementById("ticketButton");
-const footerButton = document.getElementById("footerButton");
-const fullscreenContainer = document.getElementById("fullscreenContainer");
-const centerImageContainer = document.getElementById("centerImageContainer");
-const uploadSection = document.getElementById("uploadSection");
+// Handle image upload
+function previewImage(event) {
+  const file = event.target.files[0];
+  if (!file) return;
 
-ticketButton.addEventListener("click", () => {
-  uploadSection.classList.add("hidden");
-  centerImageContainer.classList.add("hidden");
-  fullscreenContainer.classList.remove("hidden");
+  const uploadContainer = document.getElementById('uploadContainer');
+  uploadContainer.style.visibility = 'hidden'; // stays invisible but keeps space
+
+  const scrollContainer = document.getElementById('scrollContainer');
+  const uploaded = new Image();
+  uploaded.src = URL.createObjectURL(file);
+  uploaded.classList.add('uploaded');
+  scrollContainer.appendChild(uploaded);
+}
+
+// When user presses "Use 1 ticket"
+document.getElementById('useTicketButton').addEventListener('click', () => {
+  // Hide main content and footer
+  document.getElementById('mainContent').style.display = 'none';
+  document.getElementById('mainFooter').style.display = 'none';
+
+  // Show the scrollable ticket section
+  document.getElementById('ticketSection').style.display = 'flex';
 });
 
-fullscreenContainer.addEventListener("click", () => {
-  fullscreenContainer.classList.add("hidden");
-  centerImageContainer.classList.remove("hidden");
-});
+// When user taps anywhere on the ticket image
+document.getElementById('ticketSection').addEventListener('click', () => {
+  const ticketSection = document.getElementById('ticketSection');
+  ticketSection.style.display = 'none';
 
-footerButton.addEventListener("click", () => {
-  fullscreenContainer.classList.add("hidden");
-  centerImageContainer.classList.remove("hidden");
+  // Keep header
+  const header = document.getElementById('mainHeader');
+  header.style.display = 'block';
+  header.querySelector('img').src = "https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true";
+
+  // Replace main area with centered new image
+  const main = document.getElementById('mainContent');
+  main.style.display = 'flex';
+  main.innerHTML = `
+    <div class="centered-container">
+      <img src="https://github.com/ZaneAP/GoFan/blob/main/1-e459d354.jpeg?raw=true" alt="Centered Image">
+    </div>
+  `;
 });
