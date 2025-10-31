@@ -9,7 +9,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
   background: #f5f5f5;
 }
 
@@ -25,7 +24,7 @@ header .header-image {
   display: block;
 }
 
-/* Main scrollable area */
+/* Main */
 main {
   flex: 1;
   overflow-y: auto;
@@ -33,12 +32,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
-  margin-top: 0;
-  margin-bottom: 70px; /* footer height */
+  margin-bottom: 70px;
 }
 
-/* Upload container */
+/* Upload box */
 .upload-container {
   width: 100%;
   max-width: 600px;
@@ -62,21 +59,13 @@ main {
   display: none;
 }
 
-/* Scroll container */
+/* Scrollable overlay */
 .scroll-container {
   width: 100%;
   max-width: 600px;
 }
 
-/* Overlay image */
-.scroll-container img.overlay {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin-bottom: 10px;
-}
-
-/* Uploaded image */
+.scroll-container img.overlay,
 .scroll-container img.uploaded {
   width: 100%;
   height: auto;
@@ -114,9 +103,8 @@ footer button:hover {
   background: #555;
 }
 
-/* Fullscreen container hidden by default */
+/* Fullscreen container */
 .fullscreen-container {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -124,10 +112,10 @@ footer button:hover {
   height: 100%;
   background: #000;
   z-index: 50;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-  cursor: pointer; /* allows click to change */
+  cursor: pointer;
 }
 
 .fullscreen-container img {
