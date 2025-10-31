@@ -4,7 +4,7 @@ function previewImage(event) {
   if (!file) return;
 
   const uploadContainer = document.getElementById('uploadContainer');
-  uploadContainer.style.visibility = 'hidden'; // stays invisible but keeps space
+  uploadContainer.style.display = 'none'; // FIXED: removes deadspace after upload
 
   const scrollContainer = document.getElementById('scrollContainer');
   const uploaded = new Image();
@@ -15,11 +15,8 @@ function previewImage(event) {
 
 // When user presses "Use 1 ticket"
 document.getElementById('useTicketButton').addEventListener('click', () => {
-  // Hide main content and footer
   document.getElementById('mainContent').style.display = 'none';
   document.getElementById('mainFooter').style.display = 'none';
-
-  // Show the scrollable ticket section
   document.getElementById('ticketSection').style.display = 'flex';
 });
 
@@ -28,12 +25,10 @@ document.getElementById('ticketSection').addEventListener('click', () => {
   const ticketSection = document.getElementById('ticketSection');
   ticketSection.style.display = 'none';
 
-  // Keep header
   const header = document.getElementById('mainHeader');
   header.style.display = 'block';
   header.querySelector('img').src = "https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true";
 
-  // Replace main area with centered new image
   const main = document.getElementById('mainContent');
   main.style.display = 'flex';
   main.innerHTML = `
