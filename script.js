@@ -4,50 +4,41 @@ function previewImage(event) {
   if (!file) return;
 
   const uploadContainer = document.getElementById('uploadContainer');
-  uploadContainer.style.visibility = 'hidden'; // keeps layout stable
+  uploadContainer.style.visibility = 'hidden'; // stays invisible but keeps space
 
   const scrollContainer = document.getElementById('scrollContainer');
   const uploaded = new Image();
   uploaded.src = URL.createObjectURL(file);
   uploaded.classList.add('uploaded');
-
   scrollContainer.appendChild(uploaded);
 }
 
-// Handle "Use 1 ticket" click
+// When user presses "Use 1 ticket"
 document.getElementById('useTicketButton').addEventListener('click', () => {
-  // Hide main content
-  document.getElementById('mainHeader').style.display = 'none';
+  // Hide main content and footer
   document.getElementById('mainContent').style.display = 'none';
   document.getElementById('mainFooter').style.display = 'none';
 
-  // Show fullscreen ticket (new image)
-  const fullScreen = document.getElementById('fullScreenImage');
-  const ticketImage = document.getElementById('ticketImage');
-  ticketImage.src = "https://github.com/ZaneAP/GoFan/blob/main/IMG_2353%20(1).jpeg?raw=true";
-  fullScreen.style.display = 'flex';
+  // Show the scrollable ticket section
+  document.getElementById('ticketSection').style.display = 'flex';
 });
 
-// Handle fullscreen ticket click
-document.getElementById('fullScreenImage').addEventListener('click', () => {
-  // Hide the fullscreen view
-  const fullScreen = document.getElementById('fullScreenImage');
-  fullScreen.style.display = 'none';
+// When user taps anywhere on the ticket image
+document.getElementById('ticketSection').addEventListener('click', () => {
+  const ticketSection = document.getElementById('ticketSection');
+  ticketSection.style.display = 'none';
 
-  // Restore header
+  // Keep header
   const header = document.getElementById('mainHeader');
   header.style.display = 'block';
   header.querySelector('img').src = "https://github.com/ZaneAP/GoFan/blob/main/IMG_2351.jpeg?raw=true";
 
-  // Replace main content
+  // Replace main area with centered new image
   const main = document.getElementById('mainContent');
   main.style.display = 'flex';
   main.innerHTML = `
-    <div class="scroll-container" style="width:100%; max-width:600px;">
-      <img src="https://github.com/ZaneAP/GoFan/blob/main/1-e459d354.jpeg?raw=true" style="width:100%; height:auto; display:block;" alt="New Center Image">
+    <div class="centered-container">
+      <img src="https://github.com/ZaneAP/GoFan/blob/main/1-e459d354.jpeg?raw=true" alt="Centered Image">
     </div>
   `;
-
-  // Restore footer
-  document.getElementById('mainFooter').style.display = 'flex';
 });
