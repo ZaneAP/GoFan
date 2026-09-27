@@ -72,33 +72,32 @@
           </svg>
         </div>
 
-        <!-- Left Notch Cutout (green border traces it inward) -->
-        <div class="tkt-notch-left"></div>
+        <!-- Full-height Maroon Left Stub (SVG with notch cutout, vertical down-to-up text: thick text on left, thin text on right) -->
+        <svg class="stub-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 142" width="60" height="142">
+          <!-- Maroon Stub Body with Notch Cutout -->
+          <path class="stub-bg-path" d="M 60 0 L 8 0 A 8 8 0 0 0 0 8 L 0 63 A 8 8 0 0 1 8 71 A 8 8 0 0 1 0 79 L 0 134 A 8 8 0 0 0 8 142 L 60 142 Z" fill="#7e1f24" />
 
-        <!-- Full-height Maroon Left Stub -->
-        <div class="stub-l stub-l-maroon">
-          <!-- Left column (thin text, lower portion) -->
-          <div class="stub-col-left">
-            <span class="stub-desc">Start.. Wando HoCo -</span>
-          </div>
+          <!-- Thicker text on the LEFT, reading down to up -->
+          <text x="-71" y="24" transform="rotate(-90)" fill="#ffffff" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="800" letter-spacing="1.5" text-anchor="middle">ADMIT ONE</text>
+          
+          <!-- Thinner text on the RIGHT, reading down to up -->
+          <text x="-71" y="40" transform="rotate(-90)" fill="rgba(255,255,255,0.85)" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="9" font-weight="500" letter-spacing="0.2" text-anchor="middle">Wando HoCo - Start...</text>
 
-          <!-- Right column (thick bold text, higher portion) -->
-          <div class="stub-col-right">
-            <span class="stub-admit">ADMIT ONE</span>
-          </div>
+          <!-- Vertical perforation dashes along right edge -->
+          <g fill="#ffffff">
+            <rect x="58.25" y="8" width="3.5" height="7.5" rx="1.5" />
+            <rect x="58.25" y="24" width="3.5" height="7.5" rx="1.5" />
+            <rect x="58.25" y="40" width="3.5" height="7.5" rx="1.5" />
+            <rect x="58.25" y="56" width="3.5" height="7.5" rx="1.5" />
+            <rect x="58.25" y="72" width="3.5" height="7.5" rx="1.5" />
+            <rect x="58.25" y="88" width="3.5" height="7.5" rx="1.5" />
+            <rect x="58.25" y="104" width="3.5" height="7.5" rx="1.5" />
+            <rect x="58.25" y="120" width="3.5" height="7.5" rx="1.5" />
+          </g>
 
-          <!-- Vertical slot dashes perforation -->
-          <div class="stub-dashes">
-            <span class="perf-dash"></span>
-            <span class="perf-dash"></span>
-            <span class="perf-dash"></span>
-            <span class="perf-dash"></span>
-            <span class="perf-dash"></span>
-            <span class="perf-dash"></span>
-            <span class="perf-dash"></span>
-            <span class="perf-dash"></span>
-          </div>
-        </div>
+          <!-- Continuous stroke around left edge & notch -->
+          <path class="stub-stroke-path" d="M 60 1 L 8 1 A 7 7 0 0 0 1 8 L 1 63 A 8 8 0 0 1 9 71 A 8 8 0 0 1 1 79 L 1 134 A 7 7 0 0 0 8 141 L 60 141" fill="none" stroke="#3fa427" stroke-width="2" />
+        </svg>
 
         <!-- Right Content Section inside green card -->
         <div class="tkt-card-main">
@@ -198,9 +197,16 @@
 
     <!-- Middle Stop Sign Warning Area -->
     <div class="confirm-mid">
-      <!-- Authentic Red Stop Sign with Professional Stop Hand -->
+      <!-- Authentic 8-sided Red Stop Sign with Clean Stop Hand -->
       <div class="confirm-stopsign-wrap">
-        <img class="confirm-stopsign-img" src="stop-sign.png" alt="Authorized staff only" width="76" height="76">
+        <svg width="78" height="78" viewBox="0 0 100 100" fill="none">
+          <!-- Red Octagon Shape -->
+          <polygon points="29,4 71,4 96,29 96,71 71,96 29,96 4,71 4,29" fill="#d32f2f"/>
+          <!-- Professional Stop Hand Silhouette -->
+          <g transform="translate(24.5, 19) scale(0.1)" fill="#ffffff">
+            <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-176c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 272c0 1.5 0 3.1 .1 4.6L67.6 283c-16-15.2-41.3-14.6-56.6 1.4s-14.6 41.3 1.4 56.6L124.8 448c43.1 41.1 100.4 64 160 64l19.2 0c97.2 0 176-78.8 176-176l0-208c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-176c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 176c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208z"/>
+          </g>
+        </svg>
       </div>
 
       <h2 class="confirm-h2">Authorized staff only</h2>
@@ -279,32 +285,31 @@
 
       <!-- Used Ticket Graphic (Exact match to Image 1) -->
       <div class="used-stub-card">
-        <!-- Muted sage-green left stub #8fa68c -->
-        <div class="stub-l stub-l-used">
-          <!-- Left column (thin text, lower portion) -->
-          <div class="stub-col-left">
-            <span class="stub-desc">Start.. Wando HoCo -</span>
-          </div>
+        <!-- Muted sage-green left stub SVG (with notch, vertical down-to-up text: thick on left, thin on right, and 10 white dots) -->
+        <svg class="used-stub-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 110" width="60" height="110">
+          <!-- Sage Stub Body with Notch Cutout -->
+          <path d="M 60 0 L 8 0 A 8 8 0 0 0 0 8 L 0 47 A 8 8 0 0 1 8 55 A 8 8 0 0 1 0 63 L 0 102 A 8 8 0 0 0 8 110 L 60 110 Z" fill="#8fa68c" />
 
-          <!-- Right column (thick bold text, higher portion) -->
-          <div class="stub-col-right">
-            <span class="stub-admit">ADMIT ONE</span>
-          </div>
+          <!-- Thicker text on the LEFT, reading down to up -->
+          <text x="-55" y="24" transform="rotate(-90)" fill="#ffffff" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="800" letter-spacing="1.5" text-anchor="middle">ADMIT ONE</text>
+          
+          <!-- Thinner text on the RIGHT, reading down to up -->
+          <text x="-55" y="40" transform="rotate(-90)" fill="rgba(255,255,255,0.85)" font-family="'Inter', -apple-system, BlinkMacSystemFont, sans-serif" font-size="8.5" font-weight="500" letter-spacing="0.2" text-anchor="middle">Wando HoCo - Start...</text>
 
           <!-- 10 Circular White Perforation Dots -->
-          <div class="stub-dots">
-            <span class="perf-dot"></span>
-            <span class="perf-dot"></span>
-            <span class="perf-dot"></span>
-            <span class="perf-dot"></span>
-            <span class="perf-dot"></span>
-            <span class="perf-dot"></span>
-            <span class="perf-dot"></span>
-            <span class="perf-dot"></span>
-            <span class="perf-dot"></span>
-            <span class="perf-dot"></span>
-          </div>
-        </div>
+          <g fill="#ffffff">
+            <circle cx="58" cy="10" r="3.5" />
+            <circle cx="58" cy="20" r="3.5" />
+            <circle cx="58" cy="30" r="3.5" />
+            <circle cx="58" cy="40" r="3.5" />
+            <circle cx="58" cy="50" r="3.5" />
+            <circle cx="58" cy="60" r="3.5" />
+            <circle cx="58" cy="70" r="3.5" />
+            <circle cx="58" cy="80" r="3.5" />
+            <circle cx="58" cy="90" r="3.5" />
+            <circle cx="58" cy="100" r="3.5" />
+          </g>
+        </svg>
 
         <!-- Medium charcoal grey right panel #747776 -->
         <div class="stub-r stub-r-used">

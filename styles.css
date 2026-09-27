@@ -244,6 +244,7 @@ img {
 .tkt-card {
   margin: 14px 16px 0;
   border: 2px solid #3fa427;
+  border-left: none; /* Left border and notch seamlessly provided by .stub-svg */
   border-radius: 10px;
   background: #f7f7f9;
   position: relative;
@@ -284,96 +285,12 @@ img {
   display: none;
 }
 
-/* Left Notch Cutout (green border enters and outlines it) */
-.tkt-notch-left {
-  position: absolute;
-  left: -9px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 2px solid #3fa427;
-  border-left-color: transparent;
-  box-sizing: border-box;
-  z-index: 10;
-}
-
-.tkt-card:not(.selected) .tkt-notch-left {
-  border-color: #d1d1d6;
-  border-left-color: transparent;
-}
-
-/* Full-height Maroon Left Stub (#7e1f24) */
-.stub-l-maroon {
-  width: 62px;
-  min-width: 62px;
-  background: #7e1f24;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Two distinct columns on the stub: thin text at bottom left, thick text at top right */
-.stub-col-left {
-  position: absolute;
-  left: 9px;
-  bottom: 12px;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  display: flex;
-  align-items: center;
-}
-
-.stub-col-right {
-  position: absolute;
-  right: 12px;
-  top: 14px;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  display: flex;
-  align-items: center;
-}
-
-.stub-admit {
-  font-size: 12px;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.stub-desc {
-  font-size: 9px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-}
-
-/* Vertical Perforation Dashes along right edge of maroon stub */
-.stub-dashes {
-  position: absolute;
-  top: 4px;
-  bottom: 4px;
-  right: -1.75px;
-  width: 3.5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.perf-dash {
-  width: 3.5px;
-  height: 7.5px;
-  border-radius: 1.5px;
-  background: #ffffff;
+/* Full-height Left Stub SVG */
+.stub-svg {
+  display: block;
+  width: 60px;
+  height: 142px;
+  flex-shrink: 0;
 }
 
 /* Right Content Area inside green card */
@@ -887,22 +804,11 @@ img {
   position: relative;
 }
 
-.stub-l-used {
-  background: #8fa68c;
-  width: 66px;
-  min-width: 66px;
-  position: relative;
-  overflow: hidden;
-}
-
-.stub-l-used .stub-col-left {
-  left: 9px;
-  bottom: 8px;
-}
-
-.stub-l-used .stub-col-right {
-  right: 14px;
-  top: 10px;
+.used-stub-svg {
+  display: block;
+  width: 60px;
+  height: 110px;
+  flex-shrink: 0;
 }
 
 .stub-r-used {
@@ -912,28 +818,6 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-/* 10 Circular White Perforation Dots */
-.stub-dots {
-  position: absolute;
-  top: 5px;
-  bottom: 5px;
-  right: -4px;
-  width: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.perf-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ffffff;
 }
 
 .used-date-text {

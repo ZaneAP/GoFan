@@ -84,13 +84,16 @@ function toggleTicket(e) {
 function renderSelectionState() {
   const card = document.getElementById('tkt-card');
   const btn = document.getElementById('bot-use');
+  const strokePath = document.querySelector('.stub-stroke-path');
 
   if (selected) {
     if (card) card.classList.add('selected');
     if (btn) btn.disabled = false;
+    if (strokePath) strokePath.setAttribute('stroke', '#3fa427');
   } else {
     if (card) card.classList.remove('selected');
     if (btn) btn.disabled = true;
+    if (strokePath) strokePath.setAttribute('stroke', '#d1d1d6');
   }
 }
 
