@@ -1,467 +1,1021 @@
-/* ============================================
-   GoFan Ticket UI — pixel-perfect recreation
-   ============================================ */
+/* =========================================================
+   GoFan Ticket UI — Hyper-Accurate Recreation
+   Pixel-Matched to Authentic App Screenshots
+   ========================================================= */
 
-/* --- Reset --- */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  font-size:16px;
-  background:#f2f2f7;
-  color:#000;
-}
-body{
-  display:flex;
-  justify-content:center;
-  min-height:100vh;
-  min-height:100dvh;
-}
-button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
-img{display:block}
-
-/* --- Screen shell --- */
-.screen{
-  display:none;
-  flex-direction:column;
-  width:100%;
-  max-width:430px;
-  min-height:100vh;
-  min-height:100dvh;
-  background:#fff;
-  position:relative;
-}
-.screen.active{display:flex}
-
-/* --- Scrollable content area --- */
-.content{
-  flex:1;
-  overflow-y:auto;
-  overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-}
-#content-tickets{
-  padding-bottom:90px;      /* room for fixed bottom bar */
+/* --- CSS Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ============ HEADER ============ */
-.hdr{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  height:52px;
-  padding:0 16px;
-  background:#fff;
-  border-bottom:1px solid #e5e5ea;
-  flex-shrink:0;
-}
-.hdr-back{
-  background:none;border:none;
-  padding:8px 4px 8px 0;
-  display:flex;align-items:center;
-}
-.hdr-title{
-  font-size:17px;font-weight:700;
-  position:absolute;left:50%;transform:translateX(-50%);
-}
-.hdr-transfer{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:6px 12px;
-  border:1.5px solid #c7c7cc;
-  border-radius:8px;
-  background:#fff;
-  font-size:13px;font-weight:600;
-  color:#000;
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  background: #eef0f3;
+  color: #000000;
 }
 
-/* ============ ALERT BANNER ============ */
-.alert{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin:14px 16px 0;
-  padding:14px 14px;
-  background:#fdf5e0;
-  border-radius:12px;
-}
-.alert-body{display:flex;align-items:flex-start;gap:10px;flex:1}
-.alert-icon-wrap{flex-shrink:0;line-height:0}
-.alert-label{font-size:14px;font-weight:700;line-height:1.2}
-.alert-msg{font-size:13px;color:#444;line-height:1.35;margin-top:2px}
-.alert-plus{background:none;border:none;padding:6px;flex-shrink:0}
-
-/* ============ AVAILABLE PILL ============ */
-.avail-pill{
-  display:flex;flex-direction:column;align-items:center;
-  margin:14px 16px 0;
-  padding:10px 0 12px;
-  border:1.5px solid #d1d1d6;
-  border-radius:12px;
-  gap:3px;
-}
-.avail-badge{
-  width:24px;height:24px;border-radius:50%;
-  background:#007aff;
-  color:#fff;font-size:13px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;
-}
-.avail-label{font-size:14px;font-weight:600;color:#000}
-
-/* ============ TICKET CARD ============ */
-.tkt{
-  margin:14px 16px 0;
-  position:relative;
-}
-.tkt-top{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:8px;
-}
-.tkt-name{font-size:16px;font-weight:600}
-.tkt-check{
-  background:none;border:none;
-  width:28px;height:28px;
-  display:flex;align-items:center;justify-content:center;
-  padding:0;
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #eef0f3;
 }
 
-/* ======== TICKET STUB ======== */
-.stub{
-  display:flex;
-  border-radius:12px;
-  overflow:hidden;
-  min-height:120px;
-  cursor:pointer;
+button {
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* -- Left maroon panel -- */
-.stub-l{
-  width:64px;min-width:64px;
-  background:#7a1535;
-  position:relative;
-  display:flex;
-  align-items:stretch;
-}
-.stub-l-inner{
-  flex:1;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  writing-mode:vertical-lr;
-  transform:rotate(180deg);
-  gap:8px;
-  padding:10px 6px;
-}
-.stub-admit{
-  font-size:12px;font-weight:900;
-  color:#fff;letter-spacing:2.5px;
-  text-transform:uppercase;
-}
-.stub-desc{
-  font-size:8px;font-weight:500;
-  color:rgba(255,255,255,.6);
-  letter-spacing:.3px;
+img {
+  display: block;
 }
 
-/* Perforation circles */
-.stub-dots{
-  position:absolute;
-  top:0;bottom:0;right:-5px;
-  width:10px;
-  display:flex;flex-direction:column;
-  justify-content:space-around;
-  padding:8px 0;
-  z-index:2;
-}
-.stub-dots::before{
-  content:'';
-  position:absolute;inset:0;
-}
-/* Generate dots via box-shadow on a pseudo el */
-.stub-dots::after{
-  content:'';
-  position:absolute;
-  width:10px;height:10px;
-  border-radius:50%;
-  background:#fff;
-  top:8px;left:0;
-  box-shadow:
-    0  0px #fff,
-    0 12px #fff,
-    0 24px #fff,
-    0 36px #fff,
-    0 48px #fff,
-    0 60px #fff,
-    0 72px #fff,
-    0 84px #fff,
-    0 96px #fff,
-    0 108px #fff;
+/* --- Mobile Screen Container --- */
+.screen {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #ffffff;
+  position: relative;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
 }
 
-/* -- Right dark panel -- */
-.stub-r{
-  flex:1;
-  background:#111;
-  padding:18px 14px;
-  display:flex;align-items:center;gap:12px;
-}
-.stub-r-text{flex:1}
-.stub-r-title{
-  font-size:15px;font-weight:700;
-  color:#fff;line-height:1.35;
-  margin-bottom:6px;
-}
-.stub-r-date{
-  font-size:12px;color:rgba(255,255,255,.55);
-}
-.stub-r-logo{border-radius:4px;flex-shrink:0}
-
-/* Ticket counter */
-.tkt-count{
-  text-align:right;
-  font-size:12px;color:#999;
-  margin-top:8px;
+.screen.active {
+  display: flex;
+  animation: fadeEnter 0.18s ease-out;
 }
 
-/* ============ SHOW ALL INFO ============ */
-.show-info{
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  width:100%;
-  padding:14px 0;
-  background:none;border:none;
-  font-size:14px;font-weight:600;
-  color:#000;
+@keyframes fadeEnter {
+  from { opacity: 0.85; transform: scale(0.995); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* ============ SEPARATOR ============ */
-.sep{
-  border:none;
-  height:1px;
-  background:#e5e5ea;
-  margin:0 16px;
+/* --- Scrollable Content --- */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
-/* ============ NOTICE ============ */
-.notice{
-  padding:24px 22px 0;
-  text-align:center;
-}
-.notice-h{
-  font-size:18px;font-weight:800;
-  line-height:1.35;
-  margin-bottom:14px;
-}
-.notice-p{
-  font-size:14px;color:#666;
-  line-height:1.6;
+#content-tickets {
+  padding-bottom: 96px; /* Room for fixed bottom bar */
 }
 
-/* ============ EVENT DETAILS ============ */
-.evt{padding:28px 16px 0}
-.evt-h{font-size:17px;font-weight:800;margin-bottom:16px}
-.evt-row{display:flex;gap:14px;align-items:flex-start}
-.evt-logo{border-radius:8px;flex-shrink:0}
-.evt-info{display:flex;flex-direction:column;gap:2px}
-.evt-name{font-size:15px;font-weight:700;line-height:1.3}
-.evt-sub{font-size:13px;color:#888}
-.evt-dt{font-size:13px;color:#888}
-
-/* ============ BOTTOM BAR ============ */
-.bot{
-  position:fixed;
-  bottom:0;left:50%;transform:translateX(-50%);
-  width:100%;max-width:430px;
-  padding:10px 16px;
-  padding-bottom:max(10px,env(safe-area-inset-bottom));
-  background:#fff;
-  border-top:1px solid #e5e5ea;
-  display:flex;gap:10px;
-  z-index:100;
-}
-.bot-use{
-  flex:1;
-  height:50px;
-  border-radius:14px;
-  border:none;
-  background:#111;
-  color:#fff;
-  font-size:16px;font-weight:700;
-  transition:opacity .15s;
-}
-.bot-use:active{opacity:.85}
-.bot-use:disabled{background:#c7c7cc;color:#fff}
-.bot-print{
-  width:50px;height:50px;
-  border-radius:14px;
-  border:1.5px solid #c7c7cc;
-  background:#fff;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.bot-print:active{background:#f2f2f7}
-
-/* ============ SCREEN 2: CONFIRM ============ */
-.confirm-top{padding:20px 20px 0}
-.confirm-evt{font-size:16px;font-weight:700;margin-bottom:8px}
-.confirm-type{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px}
-.dot{font-size:8px}
-.confirm-mid{
-  flex:1;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;
-  padding:40px 28px 20px;
-}
-.confirm-circle{
-  width:72px;height:72px;border-radius:50%;
-  background:#c0392b;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:22px;
-  position:relative;
-}
-.confirm-circle svg{display:none}
-.confirm-hand{font-size:34px;filter:brightness(100)}
-.confirm-h2{font-size:20px;font-weight:800;margin-bottom:10px}
-.confirm-p{font-size:14px;color:#666;line-height:1.55}
-.confirm-bot{
-  padding:0 20px 20px;
-  padding-bottom:max(24px,env(safe-area-inset-bottom));
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-}
-.confirm-fine{font-size:12px;color:#aaa;margin-top:2px}
-
-/* ============ SHARED BUTTONS ============ */
-.btn-green{
-  width:100%;height:52px;
-  border-radius:14px;border:none;
-  background:#27ae60;color:#fff;
-  font-size:16px;font-weight:700;
-}
-.btn-green:active{background:#219150}
-.btn-outline{
-  width:100%;height:52px;
-  border-radius:14px;
-  border:1.5px solid #c7c7cc;
-  background:#fff;color:#000;
-  font-size:16px;font-weight:600;
-}
-.btn-outline:active{background:#f2f2f7}
-
-/* ============ SCREEN 3: SUCCESS ============ */
-#screen-success{background:#fff}
-.suc-body{
-  flex:1;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  text-align:center;
-  padding:0 32px;
-}
-.suc-ring{
-  width:120px;height:120px;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:28px;
-  position:relative;
-}
-.suc-ring::before{
-  content:'';position:absolute;inset:-16px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(46,204,113,.12) 0%,rgba(46,204,113,.02) 65%,transparent 100%);
-}
-.suc-h{font-size:24px;font-weight:800;margin-bottom:8px}
-.suc-evt{font-size:15px;color:#555;margin-bottom:6px;line-height:1.4}
-.suc-msg{font-size:13px;color:#aaa}
-.suc-bottom{padding:16px 20px;padding-bottom:max(20px,env(safe-area-inset-bottom))}
-
-/* Success animation */
-.suc-circle-anim, .suc-check-anim{
-  transition:none;
-}
-#screen-success.active .suc-circle-anim{
-  animation:drawCircle .6s ease-out .15s forwards;
-}
-#screen-success.active .suc-check-anim{
-  animation:drawCheck .4s ease-out .55s forwards;
-}
-@keyframes drawCircle{
-  to{stroke-dashoffset:0}
-}
-@keyframes drawCheck{
-  to{stroke-dashoffset:0}
+/* =========================================================
+   iOS STATUS BAR (Realistic iPhone Display)
+   ========================================================= */
+.ios-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 22px;
+  font-size: 14.5px;
+  font-weight: 600;
+  flex-shrink: 0;
+  user-select: none;
 }
 
-/* ============ SCREEN 4: USED ============ */
-.tabs{
-  display:flex;
-  margin:12px 16px 0;
-  border:1.5px solid #d1d1d6;
-  border-radius:12px;
-  overflow:hidden;
-}
-.tab-btn{
-  flex:1;
-  display:flex;flex-direction:column;align-items:center;
-  gap:4px;
-  padding:10px 0 12px;
-  background:#fff;border:none;
-  font-size:14px;font-weight:600;color:#999;
-}
-.tab-btn+.tab-btn{border-left:1.5px solid #d1d1d6}
-.tab-active{background:#f5f5f5;color:#000}
-.tab-badge{
-  width:22px;height:22px;border-radius:50%;
-  font-size:12px;font-weight:700;
-  display:flex;align-items:center;justify-content:center;
-}
-.tab-badge-gray{background:#ddd;color:#999}
-.tab-badge-dark{background:#111;color:#fff}
-
-/* Used ticket */
-.tkt-used{opacity:.6}
-.stub-used{cursor:default}
-.stub-l-used{background:#5c855e}
-.stub-r-used{background:#222}
-.stub-dots-used::after{
-  box-shadow:
-    0  0px #fff,
-    0 12px #fff,
-    0 24px #fff,
-    0 36px #fff,
-    0 48px #fff,
-    0 60px #fff,
-    0 72px #fff,
-    0 84px #fff,
-    0 96px #fff,
-    0 108px #fff;
-}
-.used-foot{
-  display:flex;align-items:center;gap:6px;
-  margin-top:10px;
-}
-.used-foot-txt{font-size:12px;font-weight:600;color:#27ae60}
-.used-foot-cnt{margin-left:auto;font-size:12px;color:#999}
-
-/* Buy more + sponsor */
-.buymore{padding:24px 16px 0}
-.sponsor{
-  text-align:center;
-  font-size:12px;color:#bbb;
-  padding:20px 16px 40px;
-}
-.sponsor b{color:#888;font-weight:600}
-
-/* ============ GLOBAL TRANSITIONS ============ */
-.screen.active{
-  animation:fadeSlide .22s ease-out;
-}
-@keyframes fadeSlide{
-  from{opacity:0;transform:translateX(20px)}
-  to{opacity:1;transform:translateX(0)}
+.ios-status-bar.dark {
+  background: #323232;
+  color: #ffffff;
 }
 
-/* ============ RESPONSIVE ============ */
-@media(max-width:430px){
-  .screen{max-width:100%}
-  .bot{max-width:100%}
+.ios-status-bar.light {
+  background: #ffffff;
+  color: #000000;
 }
-@supports(padding:env(safe-area-inset-top)){
-  .hdr{padding-top:env(safe-area-inset-top)}
+
+.status-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.status-bell {
+  opacity: 0.85;
+}
+
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-icon {
+  display: block;
+}
+
+.status-battery {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.battery-body {
+  width: 22px;
+  height: 11.5px;
+  border: 1.2px solid currentColor;
+  border-radius: 3px;
+  padding: 1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.battery-pct {
+  font-size: 8.5px;
+  font-weight: 800;
+  line-height: 1;
+  position: absolute;
+  z-index: 2;
+}
+
+.battery-level {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  bottom: 1px;
+  background: currentColor;
+  border-radius: 1.5px;
+  opacity: 0.3;
+}
+
+.battery-tip {
+  width: 1.8px;
+  height: 4.5px;
+  background: currentColor;
+  border-radius: 0 1px 1px 0;
+}
+
+/* =========================================================
+   APP HEADER
+   ========================================================= */
+.hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 16px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.hdr.dark {
+  background: #323232;
+  color: #ffffff;
+}
+
+.hdr.light {
+  background: #ffffff;
+  color: #000000;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.hdr-back {
+  background: none;
+  border: none;
+  padding: 6px 10px 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.hdr-title {
+  font-size: 17.5px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.hdr-title.dark-text {
+  color: #ffffff;
+}
+
+.hdr-transfer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.hdr-transfer:active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* =========================================================
+   EVENT ALERT BANNER (Exact sampled #fef1c3 + #f59e0b)
+   ========================================================= */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 16px 0;
+  padding: 12px 14px;
+  background: #fef1c3;
+  border-left: 4.5px solid #f59e0b;
+  border-radius: 8px;
+}
+
+.alert-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+}
+
+.alert-icon-wrap {
+  flex-shrink: 0;
+  line-height: 0;
+  margin-top: 1px;
+}
+
+.alert-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.25;
+}
+
+.alert-msg {
+  font-size: 13px;
+  color: #222224;
+  line-height: 1.35;
+  margin-top: 2px;
+}
+
+.alert-plus {
+  background: none;
+  border: none;
+  padding: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================================
+   1 AVAILABLE CARD (Border: 1px solid #38383a)
+   ========================================================= */
+.avail-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 16px 0;
+  padding: 10px 0;
+  border: 1px solid #38383a;
+  border-radius: 8px;
+  background: #ffffff;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.avail-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #000000;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avail-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+}
+
+/* =========================================================
+   TICKET CARD (Selected with Green Border #42ae28)
+   ========================================================= */
+.tkt-card {
+  margin: 14px 16px 0;
+  border-radius: 12px;
+  background: #ffffff;
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.tkt-card.selected {
+  border: 2px solid #42ae28;
+}
+
+.tkt-card:not(.selected) {
+  border: 1.5px solid #d1d1d6;
+}
+
+/* Top-right Green Checkmark Badge */
+.tkt-check-badge {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #42ae28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.tkt-card:not(.selected) .tkt-check-badge {
+  display: none;
+}
+
+.tkt-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #000000;
+  padding: 12px 14px 8px;
+}
+
+/* Ticket Stub Graphics */
+.stub {
+  margin: 0 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  height: 104px;
+  position: relative;
+}
+
+/* Left Maroon Panel (#7e1f24) */
+.stub-l {
+  width: 60px;
+  min-width: 60px;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.stub-l-maroon {
+  background: #7e1f24;
+}
+
+/* Notch Cutout on the Left Edge */
+.stub-notch-l {
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  z-index: 3;
+}
+
+.stub-l-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  gap: 6px;
+  padding: 10px 4px;
+}
+
+.stub-admit {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.stub-desc {
+  font-size: 8.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.3px;
+}
+
+/* Perforation slot dashes (Image 2 style) */
+.stub-dashes {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  right: -1.75px;
+  width: 3.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.perf-dash {
+  width: 3.5px;
+  height: 7px;
+  border-radius: 1.5px;
+  background: #ffffff;
+}
+
+/* Right Ticket Panel (Black #000000) */
+.stub-r {
+  flex: 1;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stub-r-black {
+  background: #000000;
+}
+
+.stub-r-text {
+  flex: 1;
+}
+
+.stub-r-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.stub-r-date {
+  font-size: 11.5px;
+  color: #a1a1aa;
+  margin-top: 4px;
+}
+
+.stub-r-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+/* Card bottom row */
+.tkt-card-foot {
+  border-top: 1px solid #f0f0f2;
+  margin: 10px 10px 0;
+  padding: 6px 4px 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tkt-count {
+  font-size: 12px;
+  color: #8e8e93;
+}
+
+/* Show all ticket info */
+.show-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 14px 0 16px;
+  background: none;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* Full-width Divider */
+.sep {
+  border: none;
+  height: 1px;
+  background: #e5e5ea;
+  margin: 0 16px;
+}
+
+/* =========================================================
+   VENUE NOTICE SECTION
+   ========================================================= */
+.notice {
+  padding: 22px 20px 0;
+  text-align: center;
+}
+
+.notice-h {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.notice-p {
+  font-size: 13.5px;
+  color: #333333;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   EVENT DETAILS
+   ========================================================= */
+.evt {
+  padding: 26px 16px 0;
+}
+
+.evt-h {
+  font-size: 17px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 12px;
+}
+
+.evt-card {
+  background: #f8f8fa;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.evt-logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.evt-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.evt-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.3;
+}
+
+.evt-sub, .evt-dt {
+  font-size: 13px;
+  color: #666666;
+}
+
+/* =========================================================
+   FIXED BOTTOM BAR
+   ========================================================= */
+.bot {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  padding: 10px 16px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  background: #ffffff;
+  border-top: 1px solid #e5e5ea;
+  display: flex;
+  gap: 10px;
+  z-index: 100;
+}
+
+.bot-use {
+  flex: 1;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background: #222224;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  transition: opacity 0.15s;
+}
+
+.bot-use:active {
+  opacity: 0.85;
+}
+
+.bot-use:disabled {
+  background: #d1d1d6;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+.bot-print {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1.5px solid #222224;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bot-print:active {
+  background: #f2f2f7;
+}
+
+/* =========================================================
+   SCREEN 2: CONFIRMATION (Image 3 Screen 2)
+   ========================================================= */
+.confirm-event-banner {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e5ea;
+  background: #ffffff;
+}
+
+.confirm-event-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.confirm-event-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.confirm-event-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.confirm-ticket-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.confirm-ticket-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #d32f2f;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-ticket-type {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.confirm-mid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.confirm-stopsign-wrap {
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-h2 {
+  font-size: 19px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.confirm-p {
+  font-size: 14px;
+  color: #444444;
+  line-height: 1.5;
+}
+
+.confirm-bot {
+  padding: 0 16px 20px;
+  padding-bottom: max(22px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-green {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background: #42ae28;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  transition: opacity 0.15s;
+}
+
+.btn-green:active {
+  opacity: 0.9;
+}
+
+.btn-cancel {
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  border: 1.5px solid #d1d1d6;
+  background: #ffffff;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.btn-cancel:active {
+  background: #f2f2f7;
+}
+
+.confirm-fine {
+  font-size: 12px;
+  color: #8e8e93;
+  margin-top: 2px;
+}
+
+/* =========================================================
+   SCREEN 3: SUCCESS (ENJOY - Image 3 Screen 3)
+   ========================================================= */
+#screen-success {
+  background: radial-gradient(ellipse 90% 40% at bottom, rgba(66, 174, 40, 0.22) 0%, rgba(255, 255, 255, 0) 80%), #ffffff;
+  cursor: pointer;
+}
+
+.suc-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 28px;
+}
+
+.suc-graphic {
+  margin-bottom: 24px;
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.suc-h {
+  font-size: 22px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.suc-evt {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 4px;
+}
+
+.suc-msg {
+  font-size: 13.5px;
+  color: #888888;
+}
+
+.suc-bottom {
+  padding: 16px 16px 24px;
+  padding-bottom: max(22px, env(safe-area-inset-bottom));
+}
+
+/* =========================================================
+   SCREEN 4: USED TICKETS (Image 1)
+   ========================================================= */
+.tabs {
+  display: flex;
+  margin: 12px 16px 0;
+  border: 1.5px solid #d1d1d6;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 0 12px;
+  background: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-btn + .tab-btn {
+  border-left: 1.5px solid #d1d1d6;
+}
+
+.tab-active {
+  background: #f2f2f7;
+}
+
+.tab-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-badge-inactive {
+  background: #e5e5ea;
+  color: #8e8e93;
+}
+
+.tab-badge-active {
+  background: #000000;
+  color: #ffffff;
+}
+
+.tab-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8e8e93;
+}
+
+.tab-active .tab-label {
+  font-weight: 800;
+  color: #000000;
+}
+
+.used-tkt-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  margin: 16px 16px 8px;
+}
+
+/* Used Ticket Stub (#9db69e left, #7a7a7a right) */
+.used-stub-card {
+  margin: 0 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  height: 108px;
+  position: relative;
+}
+
+.stub-l-used {
+  background: #9db69e;
+}
+
+.stub-r-used {
+  background: #7a7a7a;
+}
+
+/* 10 Circular White Perforation Dots */
+.stub-dots {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  right: -4px;
+  width: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.perf-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.used-date-text {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.used-logo-faded {
+  opacity: 0.75;
+}
+
+/* Used Meta Status Row */
+.used-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 16px 0;
+}
+
+.used-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.used-meta-txt {
+  font-size: 13px;
+  font-weight: 600;
+  color: #22c55e;
+}
+
+.used-meta-cnt {
+  font-size: 12px;
+  color: #8e8e93;
+}
+
+/* Plain Event Row on Used Screen */
+.evt-row-plain {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 16px;
+}
+
+/* Buy More Tickets Button */
+.buymore-wrap {
+  padding: 24px 16px 0;
+}
+
+.btn-buy-more {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  border: 1.5px solid #d1d1d6;
+  background: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  transition: background 0.15s;
+}
+
+.btn-buy-more:active {
+  background: #f2f2f7;
+}
+
+/* Sponsor Footer */
+.sponsor-footer {
+  text-align: center;
+  font-size: 12px;
+  color: #8e8e93;
+  padding: 24px 16px 40px;
+}
+
+.sponsor-footer b {
+  color: #444444;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 430px) {
+  .screen {
+    box-shadow: none;
+  }
 }
