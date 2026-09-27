@@ -13,53 +13,20 @@
   <!-- ==================== SCREEN 1: TICKETS (AVAILABLE) ==================== -->
   <div class="screen active" id="screen-tickets">
 
-    <!-- iOS Status Bar (Dark Theme) -->
-    <div class="ios-status-bar dark">
-      <div class="status-left">
-        <span class="status-time">7:23</span>
-        <!-- Bell with slash icon -->
-        <svg class="status-bell" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-3.5 0h-9v-5c0-2.76 2.24-5 5-5s5 2.24 5 5v5z"/>
-          <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="status-right">
-        <!-- Cellular bars -->
-        <svg class="status-icon" width="16" height="11" viewBox="0 0 17 11" fill="currentColor">
-          <rect x="0" y="8" width="3" height="3" rx="0.8"/>
-          <rect x="4.5" y="5.5" width="3" height="5.5" rx="0.8"/>
-          <rect x="9" y="3" width="3" height="8" rx="0.8"/>
-          <rect x="13.5" y="0" width="3" height="11" rx="0.8"/>
-        </svg>
-        <!-- Wi-Fi -->
-        <svg class="status-icon" width="15" height="11" viewBox="0 0 16 12" fill="currentColor">
-          <path d="M8 9.5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM2.3 5.4a8 8 0 0 1 11.4 0 .9.9 0 0 1-.2 1.3.9.9 0 0 1-1.3-.2 6.2 6.2 0 0 0-8.4 0 .9.9 0 0 1-1.3-.2.9.9 0 0 1-.2-1.1zm-2.3-3a11.8 11.8 0 0 1 16 0 .9.9 0 0 1-.2 1.3.9.9 0 0 1-1.3-.2 10 10 0 0 0-13 0 .9.9 0 0 1-1.3-.2.9.9 0 0 1-.2-1.1z"/>
-        </svg>
-        <!-- Battery 4% -->
-        <div class="status-battery">
-          <div class="battery-body">
-            <span class="battery-pct">4</span>
-            <div class="battery-level" style="width: 15%;"></div>
-          </div>
-          <div class="battery-tip"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- App Header (Dark theme #323232) -->
+    <!-- Header (Dark theme #323232) -->
     <header class="hdr dark">
       <button class="hdr-back" aria-label="Back">
         <svg width="12" height="20" viewBox="0 0 12 20" fill="none">
-          <path d="M10.5 1.5L2 10l8.5 8.5" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 2L2 10l8 8" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
       <span class="hdr-title dark-text">Tickets</span>
       <button class="hdr-transfer">
-        <!-- Transfer icon -->
-        <svg width="18" height="14" viewBox="0 0 20 16" fill="none">
-          <rect x="1" y="1" width="13" height="9" rx="2" stroke="#ffffff" stroke-width="1.6"/>
-          <rect x="6" y="6" width="13" height="9" rx="2" stroke="#ffffff" stroke-width="1.6" fill="#323232"/>
-          <path d="M9 10.5h7" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/>
+        <!-- Transfer ticket icon -->
+        <svg width="18" height="15" viewBox="0 0 20 16" fill="none">
+          <rect x="1" y="1" width="13" height="10" rx="2" stroke="#ffffff" stroke-width="1.6"/>
+          <circle cx="14" cy="11" r="4.5" fill="#323232" stroke="#ffffff" stroke-width="1.2"/>
+          <path d="M12.5 11a1.5 1.5 0 1 1 2.5 1.2M15 12.5l-0.5-2h2" stroke="#ffffff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         Transfer
       </button>
@@ -68,12 +35,12 @@
     <!-- Scrollable Content -->
     <div class="content" id="content-tickets">
 
-      <!-- Event Alert Banner -->
+      <!-- Event Alert Banner (Yellow with gold left stripe) -->
       <div class="alert">
         <div class="alert-body">
           <div class="alert-icon-wrap">
             <svg width="22" height="22" viewBox="0 0 22 22">
-              <circle cx="11" cy="11" r="10" fill="#facc15"/>
+              <circle cx="11" cy="11" r="10" fill="#f1c40f"/>
               <text x="11" y="16" text-anchor="middle" fill="#000000" font-size="15" font-weight="900" font-family="Inter,sans-serif">!</text>
             </svg>
           </div>
@@ -96,57 +63,58 @@
         <span class="avail-label">Available</span>
       </div>
 
-      <!-- Ticket Card Container (Green border + checkmark badge when selected) -->
+      <!-- Selected Ticket Card Container -->
       <div class="tkt-card selected" id="tkt-card" onclick="toggleTicket(event)">
-        <!-- Top right circular green checkmark badge -->
+        <!-- Top-right circular green checkmark badge -->
         <div class="tkt-check-badge" id="tkt-check-badge">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <svg width="15" height="15" viewBox="0 0 14 14" fill="none">
             <path d="M3.5 7.2l2.6 2.6 4.8-5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
 
-        <!-- Ticket category name -->
-        <div class="tkt-card-title">Wando Hoco Dance</div>
+        <!-- Left Notch Cutout (green border traces it inward) -->
+        <div class="tkt-notch-left"></div>
 
-        <!-- The Ticket Stub Structure -->
-        <div class="stub stub-avail">
-          <!-- Maroon left panel with cutout notch -->
-          <div class="stub-l stub-l-maroon">
-            <!-- Left notch cutout -->
-            <div class="stub-notch-l"></div>
-
-            <div class="stub-l-inner">
-              <span class="stub-admit">ADMIT ONE</span>
-              <span class="stub-desc">Wando HoCo - Start...</span>
-            </div>
-
-            <!-- Perforation slot dashes -->
-            <div class="stub-dashes">
-              <span class="perf-dash"></span>
-              <span class="perf-dash"></span>
-              <span class="perf-dash"></span>
-              <span class="perf-dash"></span>
-              <span class="perf-dash"></span>
-              <span class="perf-dash"></span>
-              <span class="perf-dash"></span>
-              <span class="perf-dash"></span>
-            </div>
+        <!-- Full-height Maroon Left Stub -->
+        <div class="stub-l stub-l-maroon">
+          <div class="stub-l-inner">
+            <span class="stub-admit">ADMIT ONE</span>
+            <span class="stub-desc">Wando HoCo - Start...</span>
           </div>
 
-          <!-- Black main ticket panel -->
-          <div class="stub-r stub-r-black">
-            <div class="stub-r-text">
-              <div class="stub-r-title">Wando Homecoming Dance</div>
-              <div class="stub-r-date">Sat. Oct 3, 2026 at 7:30 PM</div>
-            </div>
-            <!-- Authentic Wando Diamond Logo -->
-            <img class="stub-r-logo" src="wando-logo.png" alt="Wando Warriors Logo" width="46" height="46">
+          <!-- Vertical slot dashes perforation -->
+          <div class="stub-dashes">
+            <span class="perf-dash"></span>
+            <span class="perf-dash"></span>
+            <span class="perf-dash"></span>
+            <span class="perf-dash"></span>
+            <span class="perf-dash"></span>
+            <span class="perf-dash"></span>
+            <span class="perf-dash"></span>
+            <span class="perf-dash"></span>
           </div>
         </div>
 
-        <!-- Bottom section of card with divider and 1 of 1 -->
-        <div class="tkt-card-foot">
-          <span class="tkt-count">1 of 1</span>
+        <!-- Right Content Section inside green card -->
+        <div class="tkt-card-main">
+          <!-- Ticket category name -->
+          <div class="tkt-cat-name">Wando Hoco Dance</div>
+
+          <!-- Black event rectangle with overlapping Wando logo -->
+          <div class="tkt-black-box">
+            <div class="tkt-black-text">
+              <div class="tkt-black-title">Wando Homecoming Dance</div>
+              <div class="tkt-black-date">Sat. Oct 3, 2026 at 7:30 PM</div>
+            </div>
+            <!-- Pristine Vector Wando Logo overlapping right border -->
+            <img class="tkt-overlap-logo" src="wando-logo.svg" alt="Wando Warriors Logo" width="44" height="52">
+          </div>
+
+          <!-- Divider & count -->
+          <div class="tkt-inner-div"></div>
+          <div class="tkt-inner-foot">
+            <span class="tkt-count">1 of 1</span>
+          </div>
         </div>
       </div>
 
@@ -171,7 +139,7 @@
       <div class="evt">
         <h3 class="evt-h">Event details</h3>
         <div class="evt-card">
-          <img class="evt-logo" src="wando-logo.png" alt="Wando High School" width="58" height="58">
+          <img class="evt-logo" src="wando-logo.svg" alt="Wando High School" width="56" height="66">
           <div class="evt-info">
             <div class="evt-name">Wando Homecoming Dance</div>
             <div class="evt-sub">Wando HoCo - Start Your Engines</div>
@@ -186,8 +154,7 @@
     <div class="bot" id="bot-bar">
       <button class="bot-use" id="bot-use" onclick="goConfirm()">Use 1 ticket</button>
       <button class="bot-print" aria-label="Print tickets">
-        <!-- Printer SVG -->
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#222224" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2c2c2c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 6 2 18 2 18 9"/>
           <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
           <rect x="6" y="14" width="12" height="8"/>
@@ -201,40 +168,11 @@
   <!-- ==================== SCREEN 2: CONFIRMATION ==================== -->
   <div class="screen" id="screen-confirm">
 
-    <!-- iOS Status Bar (Dark Theme) -->
-    <div class="ios-status-bar dark">
-      <div class="status-left">
-        <span class="status-time">7:23</span>
-        <svg class="status-bell" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-3.5 0h-9v-5c0-2.76 2.24-5 5-5s5 2.24 5 5v5z"/>
-          <line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="status-right">
-        <svg class="status-icon" width="16" height="11" viewBox="0 0 17 11" fill="currentColor">
-          <rect x="0" y="8" width="3" height="3" rx="0.8"/>
-          <rect x="4.5" y="5.5" width="3" height="5.5" rx="0.8"/>
-          <rect x="9" y="3" width="3" height="8" rx="0.8"/>
-          <rect x="13.5" y="0" width="3" height="11" rx="0.8"/>
-        </svg>
-        <svg class="status-icon" width="15" height="11" viewBox="0 0 16 12" fill="currentColor">
-          <path d="M8 9.5a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zM2.3 5.4a8 8 0 0 1 11.4 0 .9.9 0 0 1-.2 1.3.9.9 0 0 1-1.3-.2 6.2 6.2 0 0 0-8.4 0 .9.9 0 0 1-1.3-.2.9.9 0 0 1-.2-1.1zm-2.3-3a11.8 11.8 0 0 1 16 0 .9.9 0 0 1-.2 1.3.9.9 0 0 1-1.3-.2 10 10 0 0 0-13 0 .9.9 0 0 1-1.3-.2.9.9 0 0 1-.2-1.1z"/>
-        </svg>
-        <div class="status-battery">
-          <div class="battery-body">
-            <span class="battery-pct">4</span>
-            <div class="battery-level" style="width: 15%;"></div>
-          </div>
-          <div class="battery-tip"></div>
-        </div>
-      </div>
-    </div>
-
     <!-- Header (Dark #323232) -->
     <header class="hdr dark">
       <button class="hdr-back" onclick="go('screen-tickets')" aria-label="Back">
         <svg width="12" height="20" viewBox="0 0 12 20" fill="none">
-          <path d="M10.5 1.5L2 10l8.5 8.5" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 2L2 10l8 8" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
       <span class="hdr-title dark-text">My tickets</span>
@@ -244,7 +182,7 @@
     <!-- Event & Ticket Summary Header (Image 3 Screen 2) -->
     <div class="confirm-event-banner">
       <div class="confirm-event-row">
-        <img class="confirm-event-icon" src="wando-logo.png" alt="W" width="22" height="22">
+        <img class="confirm-event-icon" src="wando-logo.svg" alt="W" width="20" height="24">
         <span class="confirm-event-name">Wando Homecoming Dance</span>
       </div>
       <div class="confirm-ticket-row">
@@ -255,25 +193,14 @@
 
     <!-- Middle Stop Sign Warning Area -->
     <div class="confirm-mid">
-      <!-- Authentic 8-sided Red Stop Sign with White Stop Hand -->
+      <!-- Authentic 8-sided Red Stop Sign with Professional Stop Hand -->
       <div class="confirm-stopsign-wrap">
-        <svg width="76" height="76" viewBox="0 0 76 76" fill="none">
+        <svg width="78" height="78" viewBox="0 0 100 100" fill="none">
           <!-- Red Octagon Shape -->
-          <polygon points="22.5,4 53.5,4 72,22.5 72,53.5 53.5,72 22.5,72 4,53.5 4,22.5" fill="#d32f2f"/>
-          <!-- Crisp White Raised Hand Silhouette -->
-          <g fill="#ffffff">
-            <!-- Palm body -->
-            <path d="M26 36 C26 30 28 26 38 26 C48 26 50 30 50 36 L50 46 C50 53 45 57 38 57 C31 57 26 53 26 46 Z"/>
-            <!-- Thumb -->
-            <path d="M24 38 C20 38 19 33 22 30 C24 27 27 29 28 32 L28 37 Z"/>
-            <!-- Index finger -->
-            <rect x="28" y="18" width="4.5" height="17" rx="2.25"/>
-            <!-- Middle finger -->
-            <rect x="34.5" y="15" width="4.5" height="20" rx="2.25"/>
-            <!-- Ring finger -->
-            <rect x="41" y="18" width="4.5" height="17" rx="2.25"/>
-            <!-- Pinky finger -->
-            <rect x="47.5" y="22" width="4" height="13" rx="2"/>
+          <polygon points="29,4 71,4 96,29 96,71 71,96 29,96 4,71 4,29" fill="#d32f2f"/>
+          <!-- Professional Stop Hand Silhouette -->
+          <g transform="translate(24.5, 19) scale(0.1)" fill="#ffffff">
+            <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-176c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 272c0 1.5 0 3.1 .1 4.6L67.6 283c-16-15.2-41.3-14.6-56.6 1.4s-14.6 41.3 1.4 56.6L124.8 448c43.1 41.1 100.4 64 160 64l19.2 0c97.2 0 176-78.8 176-176l0-208c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-176c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 176c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208z"/>
           </g>
         </svg>
       </div>
@@ -294,27 +221,6 @@
 
   <!-- ==================== SCREEN 3: SUCCESS (ENJOY) ==================== -->
   <div class="screen" id="screen-success" onclick="go('screen-used')">
-
-    <!-- Minimal Top -->
-    <div class="ios-status-bar light">
-      <div class="status-left">
-        <span class="status-time">7:23</span>
-      </div>
-      <div class="status-right">
-        <svg class="status-icon" width="16" height="11" viewBox="0 0 17 11" fill="#000000">
-          <rect x="0" y="8" width="3" height="3" rx="0.8"/>
-          <rect x="4.5" y="5.5" width="3" height="5.5" rx="0.8"/>
-          <rect x="9" y="3" width="3" height="8" rx="0.8"/>
-          <rect x="13.5" y="0" width="3" height="11" rx="0.8"/>
-        </svg>
-        <div class="status-battery">
-          <div class="battery-body" style="border-color: #000;">
-            <div class="battery-level" style="width: 15%; background: #000;"></div>
-          </div>
-          <div class="battery-tip" style="background: #000;"></div>
-        </div>
-      </div>
-    </div>
 
     <div class="suc-body">
       <!-- Authentic GoFan Ticket + Checkmark Graphic -->
@@ -349,7 +255,7 @@
     <header class="hdr light">
       <button class="hdr-back" onclick="goAvail()" aria-label="Back">
         <svg width="12" height="20" viewBox="0 0 12 20" fill="none">
-          <path d="M10.5 1.5L2 10l8.5 8.5" stroke="#000000" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 2L2 10l8 8" stroke="#000000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
       <span class="hdr-title">My tickets</span>
@@ -375,9 +281,8 @@
 
       <!-- Used Ticket Graphic (Exact match to Image 1) -->
       <div class="used-stub-card">
-        <!-- Muted sage-green left stub #9db69e -->
+        <!-- Muted sage-green left stub #8fa68c -->
         <div class="stub-l stub-l-used">
-          <div class="stub-notch-l"></div>
           <div class="stub-l-inner">
             <span class="stub-admit">ADMIT ONE</span>
             <span class="stub-desc">Wando HoCo - Start...</span>
@@ -398,14 +303,14 @@
           </div>
         </div>
 
-        <!-- Medium charcoal grey right panel #7a7a7a -->
+        <!-- Medium charcoal grey right panel #747776 -->
         <div class="stub-r stub-r-used">
           <div class="stub-r-text">
             <div class="stub-r-title">Wando Homecoming Dance</div>
             <div class="stub-r-date used-date-text">Sat. Oct 3, 2026 at 7:30 PM</div>
           </div>
           <!-- Faded Wando Diamond Logo -->
-          <img class="stub-r-logo used-logo-faded" src="wando-logo.png" alt="W" width="46" height="46">
+          <img class="stub-r-logo used-logo-faded" src="wando-logo.svg" alt="W" width="30" height="35">
         </div>
       </div>
 
@@ -413,8 +318,8 @@
       <div class="used-meta-row">
         <div class="used-meta-left">
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <circle cx="9" cy="9" r="8" stroke="#22c55e" stroke-width="1.8"/>
-            <path d="M5.5 9.2l2.4 2.4 4.8-5" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9" cy="9" r="8" stroke="#4caf50" stroke-width="1.8"/>
+            <path d="M5.5 9.2l2.4 2.4 4.8-5" stroke="#4caf50" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <span class="used-meta-txt">Used Sat, Oct 03, 7:28 PM</span>
         </div>
@@ -425,7 +330,7 @@
       <div class="evt">
         <h3 class="evt-h">Event details</h3>
         <div class="evt-row-plain">
-          <img class="evt-logo" src="wando-logo.png" alt="Wando Warriors" width="54" height="54">
+          <img class="evt-logo" src="wando-logo.svg" alt="Wando Warriors" width="54" height="64">
           <div class="evt-info">
             <div class="evt-name">Wando Homecoming Dance</div>
             <div class="evt-sub">Wando HoCo - Start Your Engines</div>

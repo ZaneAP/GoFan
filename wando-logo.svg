@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 118" width="100" height="118">
+  <!-- Outer Maroon Shape -->
+  <path d="M 50 2 
+           C 68 32, 78 44, 96 59 
+           C 78 74, 68 86, 50 116 
+           C 32 86, 22 74, 4 59 
+           C 22 44, 32 32, 50 2 Z" 
+        fill="#82142d" />
+        
+  <!-- White Inner Contour Border -->
+  <path d="M 50 8 
+           C 66 35, 75 46, 90 59 
+           C 75 72, 66 83, 50 110 
+           C 34 83, 25 72, 10 59 
+           C 25 46, 34 35, 50 8 Z" 
+        fill="none" 
+        stroke="#ffffff" 
+        stroke-width="3" 
+        stroke-linejoin="round" />
+        
+  <!-- Center Collegiate 'W' with Serifs -->
+  <g fill="#ffffff">
+    <!-- Left Top Serif -->
+    <rect x="23" y="45" width="10" height="3.5" rx="0.5" />
+    <!-- Center Top Serif -->
+    <rect x="45" y="52" width="10" height="3" rx="0.5" />
+    <!-- Right Top Serif -->
+    <rect x="67" y="45" width="10" height="3.5" rx="0.5" />
+    
+    <!-- Athletic 'W' Main Body -->
+    <path d="M 26 48.5 
+             L 36 75 
+             L 43.5 75 
+             L 50 55 
+             L 56.5 75 
+             L 64 75 
+             L 74 48.5 
+             L 68.5 48.5 
+             L 60.5 70 
+             L 53.5 52 
+             L 46.5 52 
+             L 39.5 70 
+             L 31.5 48.5 Z" />
+  </g>
+</svg>

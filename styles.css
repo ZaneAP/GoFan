@@ -1,9 +1,9 @@
 /* =========================================================
    GoFan Ticket UI — Hyper-Accurate Recreation
-   Pixel-Matched to Authentic App Screenshots
+   Pixel-Matched to Authentic Mobile Screenshots
    ========================================================= */
 
-/* --- CSS Reset & Base --- */
+/* --- CSS Reset & Typography --- */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -11,11 +11,11 @@
 }
 
 html {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  background: #eef0f3;
+  background: #f2f2f7;
   color: #000000;
 }
 
@@ -24,13 +24,14 @@ body {
   justify-content: center;
   min-height: 100vh;
   min-height: 100dvh;
-  background: #eef0f3;
+  background: #f2f2f7;
 }
 
 button {
   font-family: inherit;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 img {
@@ -47,17 +48,17 @@ img {
   min-height: 100dvh;
   background: #ffffff;
   position: relative;
-  box-shadow: 0 0 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 28px rgba(0, 0, 0, 0.08);
 }
 
 .screen.active {
   display: flex;
-  animation: fadeEnter 0.18s ease-out;
+  animation: screenFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes fadeEnter {
-  from { opacity: 0.85; transform: scale(0.995); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes screenFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- Scrollable Content --- */
@@ -69,95 +70,7 @@ img {
 }
 
 #content-tickets {
-  padding-bottom: 96px; /* Room for fixed bottom bar */
-}
-
-/* =========================================================
-   iOS STATUS BAR (Realistic iPhone Display)
-   ========================================================= */
-.ios-status-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 44px;
-  padding: 0 22px;
-  font-size: 14.5px;
-  font-weight: 600;
-  flex-shrink: 0;
-  user-select: none;
-}
-
-.ios-status-bar.dark {
-  background: #323232;
-  color: #ffffff;
-}
-
-.ios-status-bar.light {
-  background: #ffffff;
-  color: #000000;
-}
-
-.status-left {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.status-bell {
-  opacity: 0.85;
-}
-
-.status-right {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.status-icon {
-  display: block;
-}
-
-.status-battery {
-  display: flex;
-  align-items: center;
-  gap: 1px;
-}
-
-.battery-body {
-  width: 22px;
-  height: 11.5px;
-  border: 1.2px solid currentColor;
-  border-radius: 3px;
-  padding: 1px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.battery-pct {
-  font-size: 8.5px;
-  font-weight: 800;
-  line-height: 1;
-  position: absolute;
-  z-index: 2;
-}
-
-.battery-level {
-  position: absolute;
-  left: 1px;
-  top: 1px;
-  bottom: 1px;
-  background: currentColor;
-  border-radius: 1.5px;
-  opacity: 0.3;
-}
-
-.battery-tip {
-  width: 1.8px;
-  height: 4.5px;
-  background: currentColor;
-  border-radius: 0 1px 1px 0;
+  padding-bottom: 96px; /* Space for fixed bottom bar */
 }
 
 /* =========================================================
@@ -167,10 +80,11 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
+  height: 52px;
   padding: 0 16px;
   flex-shrink: 0;
   position: relative;
+  z-index: 20;
 }
 
 .hdr.dark {
@@ -187,15 +101,20 @@ img {
 .hdr-back {
   background: none;
   border: none;
-  padding: 6px 10px 6px 0;
+  padding: 8px 10px 8px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   color: inherit;
+  transition: transform 0.12s ease;
+}
+
+.hdr-back:active {
+  transform: scale(0.92);
 }
 
 .hdr-title {
-  font-size: 17.5px;
+  font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.3px;
   position: absolute;
@@ -211,38 +130,40 @@ img {
 .hdr-transfer {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   padding: 5px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  font-size: 13px;
-  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 5px;
+  background: transparent;
+  font-size: 13.5px;
+  font-weight: 500;
   color: #ffffff;
+  transition: background 0.15s, transform 0.12s;
 }
 
 .hdr-transfer:active {
   background: rgba(255, 255, 255, 0.18);
+  transform: scale(0.96);
 }
 
 /* =========================================================
-   EVENT ALERT BANNER (Exact sampled #fef1c3 + #f59e0b)
+   EVENT ALERT BANNER (Exact sampled #fef1c3 + #f1be1b)
    ========================================================= */
 .alert {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 12px 16px 0;
+  margin: 14px 16px 0;
   padding: 12px 14px;
   background: #fef1c3;
-  border-left: 4.5px solid #f59e0b;
-  border-radius: 8px;
+  border-left: 4.5px solid #f1be1b;
+  border-radius: 4px;
 }
 
 .alert-body {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
+  gap: 11px;
   flex: 1;
 }
 
@@ -253,15 +174,15 @@ img {
 }
 
 .alert-label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: #000000;
   line-height: 1.25;
 }
 
 .alert-msg {
-  font-size: 13px;
-  color: #222224;
+  font-size: 13.5px;
+  color: #1a1a1a;
   line-height: 1.35;
   margin-top: 2px;
 }
@@ -277,20 +198,25 @@ img {
 }
 
 /* =========================================================
-   1 AVAILABLE CARD (Border: 1px solid #38383a)
+   1 AVAILABLE CARD (Border: 1px solid #4a4a4a)
    ========================================================= */
 .avail-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 12px 16px 0;
+  margin: 14px 16px 0;
   padding: 10px 0;
-  border: 1px solid #38383a;
-  border-radius: 8px;
-  background: #ffffff;
+  border: 1px solid #4a4a4a;
+  border-radius: 6px;
+  background: #f2f2f2;
   gap: 3px;
   cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+.avail-card:active {
+  transform: scale(0.985);
 }
 
 .avail-badge {
@@ -307,193 +233,210 @@ img {
 }
 
 .avail-label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: #000000;
 }
 
 /* =========================================================
-   TICKET CARD (Selected with Green Border #42ae28)
+   SELECTED TICKET CARD (Pixel-Matched to ticket_card_cropped.png)
    ========================================================= */
 .tkt-card {
   margin: 14px 16px 0;
-  border-radius: 12px;
-  background: #ffffff;
+  border: 2px solid #3fa427;
+  border-radius: 10px;
+  background: #f7f7f9;
   position: relative;
+  display: flex;
+  min-height: 142px;
+  box-sizing: border-box;
   cursor: pointer;
-  transition: border-color 0.15s ease;
-}
-
-.tkt-card.selected {
-  border: 2px solid #42ae28;
+  transition: border-color 0.2s ease, transform 0.15s ease;
 }
 
 .tkt-card:not(.selected) {
-  border: 1.5px solid #d1d1d6;
+  border-color: #d1d1d6;
 }
 
-/* Top-right Green Checkmark Badge */
+/* Green Checkmark Badge at top-right corner */
 .tkt-check-badge {
   position: absolute;
-  top: -9px;
-  right: -9px;
-  width: 22px;
-  height: 22px;
+  top: -11px;
+  right: -11px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: #42ae28;
+  background: #3fa427;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  z-index: 15;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  animation: badgePop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes badgePop {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .tkt-card:not(.selected) .tkt-check-badge {
   display: none;
 }
 
-.tkt-card-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: #000000;
-  padding: 12px 14px 8px;
+/* Left Notch Cutout (green border enters and outlines it) */
+.tkt-notch-left {
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #3fa427;
+  box-sizing: border-box;
+  z-index: 10;
 }
 
-/* Ticket Stub Graphics */
-.stub {
-  margin: 0 10px;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  height: 104px;
-  position: relative;
+.tkt-card:not(.selected) .tkt-notch-left {
+  border-color: #d1d1d6;
 }
 
-/* Left Maroon Panel (#7e1f24) */
-.stub-l {
+/* Full-height Maroon Left Stub (#7e1f24) */
+.stub-l-maroon {
   width: 60px;
   min-width: 60px;
+  background: #7e1f24;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
   position: relative;
   display: flex;
   align-items: stretch;
-}
-
-.stub-l-maroon {
-  background: #7e1f24;
-}
-
-/* Notch Cutout on the Left Edge */
-.stub-notch-l {
-  position: absolute;
-  left: -7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #ffffff;
-  z-index: 3;
+  overflow: hidden;
 }
 
 .stub-l-inner {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   writing-mode: vertical-lr;
   transform: rotate(180deg);
   gap: 6px;
-  padding: 10px 4px;
+  padding: 8px 4px;
 }
 
 .stub-admit {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 800;
   color: #ffffff;
-  letter-spacing: 1.8px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
 .stub-desc {
-  font-size: 8.5px;
+  font-size: 9.5px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.85);
   letter-spacing: 0.3px;
 }
 
-/* Perforation slot dashes (Image 2 style) */
+/* Vertical Perforation Dashes along right edge of maroon stub */
 .stub-dashes {
   position: absolute;
-  top: 6px;
-  bottom: 6px;
+  top: 4px;
+  bottom: 4px;
   right: -1.75px;
   width: 3.5px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  z-index: 2;
+  z-index: 5;
   pointer-events: none;
 }
 
 .perf-dash {
   width: 3.5px;
-  height: 7px;
+  height: 7.5px;
   border-radius: 1.5px;
   background: #ffffff;
 }
 
-/* Right Ticket Panel (Black #000000) */
-.stub-r {
+/* Right Content Area inside green card */
+.tkt-card-main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px 8px 12px;
+  overflow: visible;
+}
+
+.tkt-cat-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+/* Black Box Container */
+.tkt-black-box {
+  background: #000000;
+  border-radius: 2px;
   padding: 12px 14px;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin-right: 18px; /* Leave space for overlapping logo */
+  min-height: 68px;
 }
 
-.stub-r-black {
-  background: #000000;
-}
-
-.stub-r-text {
+.tkt-black-text {
   flex: 1;
 }
 
-.stub-r-title {
+.tkt-black-title {
   font-size: 14.5px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.25;
 }
 
-.stub-r-date {
-  font-size: 11.5px;
-  color: #a1a1aa;
+.tkt-black-date {
+  font-size: 12px;
+  color: #d1d1d6;
   margin-top: 4px;
 }
 
-.stub-r-logo {
+/* Overlapping Wando Diamond Logo */
+.tkt-overlap-logo {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 44px;
-  height: 44px;
+  height: 52px;
   object-fit: contain;
-  flex-shrink: 0;
-  margin-left: 10px;
+  z-index: 6;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
 }
 
-/* Card bottom row */
-.tkt-card-foot {
-  border-top: 1px solid #f0f0f2;
-  margin: 10px 10px 0;
-  padding: 6px 4px 8px;
+.tkt-inner-div {
+  border-top: 1px solid #e2e2e5;
+  margin-top: 14px;
+}
+
+.tkt-inner-foot {
   display: flex;
   justify-content: flex-end;
+  padding-top: 6px;
 }
 
 .tkt-count {
   font-size: 12px;
-  color: #8e8e93;
+  color: #666666;
 }
 
 /* Show all ticket info */
@@ -506,9 +449,14 @@ img {
   padding: 14px 0 16px;
   background: none;
   border: none;
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 600;
   color: #000000;
+  transition: opacity 0.15s;
+}
+
+.show-info:active {
+  opacity: 0.6;
 }
 
 /* Full-width Divider */
@@ -523,12 +471,12 @@ img {
    VENUE NOTICE SECTION
    ========================================================= */
 .notice {
-  padding: 22px 20px 0;
+  padding: 24px 20px 0;
   text-align: center;
 }
 
 .notice-h {
-  font-size: 18px;
+  font-size: 18.5px;
   font-weight: 800;
   line-height: 1.35;
   color: #000000;
@@ -538,7 +486,7 @@ img {
 .notice-p {
   font-size: 13.5px;
   color: #333333;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* =========================================================
@@ -549,7 +497,7 @@ img {
 }
 
 .evt-h {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 800;
   color: #000000;
   margin-bottom: 12px;
@@ -557,7 +505,7 @@ img {
 
 .evt-card {
   background: #f8f8fa;
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 14px 16px;
   display: flex;
   align-items: center;
@@ -565,8 +513,8 @@ img {
 }
 
 .evt-logo {
-  width: 58px;
-  height: 58px;
+  width: 56px;
+  height: 66px;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -578,15 +526,15 @@ img {
 }
 
 .evt-name {
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 700;
   color: #000000;
   line-height: 1.3;
 }
 
 .evt-sub, .evt-dt {
-  font-size: 13px;
-  color: #666666;
+  font-size: 13.5px;
+  color: #4a4a4a;
 }
 
 /* =========================================================
@@ -600,7 +548,7 @@ img {
   width: 100%;
   max-width: 430px;
   padding: 10px 16px;
-  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  padding-bottom: max(14px, env(safe-area-inset-bottom));
   background: #ffffff;
   border-top: 1px solid #e5e5ea;
   display: flex;
@@ -610,40 +558,44 @@ img {
 
 .bot-use {
   flex: 1;
-  height: 50px;
-  border-radius: 10px;
+  height: 48px;
+  border-radius: 6px;
   border: none;
-  background: #222224;
+  background: #2c2c2c;
   color: #ffffff;
   font-size: 16px;
-  font-weight: 700;
-  transition: opacity 0.15s;
+  font-weight: 600;
+  transition: transform 0.12s ease, opacity 0.12s ease;
 }
 
 .bot-use:active {
-  opacity: 0.85;
+  transform: scale(0.98);
+  opacity: 0.9;
 }
 
 .bot-use:disabled {
   background: #d1d1d6;
   color: #ffffff;
   cursor: not-allowed;
+  transform: none;
 }
 
 .bot-print {
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  border: 1.5px solid #222224;
-  background: #ffffff;
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  border: 1px solid #4a4a4a;
+  background: #f9f9f9;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.12s ease;
 }
 
 .bot-print:active {
-  background: #f2f2f7;
+  transform: scale(0.94);
+  background: #eef0f3;
 }
 
 /* =========================================================
@@ -664,14 +616,14 @@ img {
 
 .confirm-event-icon {
   width: 20px;
-  height: 20px;
+  height: 24px;
   object-fit: contain;
 }
 
 .confirm-event-name {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 700;
-  color: #111111;
+  color: #000000;
 }
 
 .confirm-ticket-row {
@@ -694,7 +646,7 @@ img {
 }
 
 .confirm-ticket-type {
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 700;
   color: #000000;
 }
@@ -706,7 +658,7 @@ img {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px 24px;
+  padding: 45px 24px;
 }
 
 .confirm-stopsign-wrap {
@@ -714,6 +666,12 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: stopSignPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes stopSignPop {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .confirm-h2 {
@@ -741,32 +699,34 @@ img {
 .btn-green {
   width: 100%;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 8px;
   border: none;
   background: #42ae28;
   color: #ffffff;
   font-size: 16px;
   font-weight: 700;
-  transition: opacity 0.15s;
+  transition: transform 0.12s ease, opacity 0.12s ease;
 }
 
 .btn-green:active {
+  transform: scale(0.985);
   opacity: 0.9;
 }
 
 .btn-cancel {
   width: 100%;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1.5px solid #d1d1d6;
   background: #ffffff;
   color: #000000;
   font-size: 16px;
   font-weight: 600;
-  transition: background 0.15s;
+  transition: background 0.15s, transform 0.12s ease;
 }
 
 .btn-cancel:active {
+  transform: scale(0.985);
   background: #f2f2f7;
 }
 
@@ -796,11 +756,11 @@ img {
 
 .suc-graphic {
   margin-bottom: 24px;
-  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: successPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-@keyframes popIn {
-  from { transform: scale(0.7); opacity: 0; }
+@keyframes successPop {
+  from { transform: scale(0.6); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
 
@@ -849,6 +809,7 @@ img {
   background: #ffffff;
   border: none;
   cursor: pointer;
+  transition: background 0.15s;
 }
 
 .tab-btn + .tab-btn {
@@ -894,26 +855,36 @@ img {
 .used-tkt-title {
   font-size: 16px;
   font-weight: 700;
-  color: #000000;
+  color: #4a4a4a;
   margin: 16px 16px 8px;
 }
 
-/* Used Ticket Stub (#9db69e left, #7a7a7a right) */
+/* Used Ticket Stub (#8fa68c left, #747776 right) */
 .used-stub-card {
   margin: 0 16px;
   border-radius: 12px;
   overflow: hidden;
   display: flex;
-  height: 108px;
+  height: 110px;
   position: relative;
 }
 
 .stub-l-used {
-  background: #9db69e;
+  background: #8fa68c;
+  width: 66px;
+  min-width: 66px;
+  position: relative;
+  display: flex;
+  align-items: stretch;
 }
 
 .stub-r-used {
-  background: #7a7a7a;
+  background: #747776;
+  flex: 1;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* 10 Circular White Perforation Dots */
@@ -939,11 +910,14 @@ img {
 }
 
 .used-date-text {
-  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  color: #b0b3b2;
+  margin-top: 4px;
 }
 
 .used-logo-faded {
   opacity: 0.75;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
 /* Used Meta Status Row */
@@ -963,12 +937,12 @@ img {
 .used-meta-txt {
   font-size: 13px;
   font-weight: 600;
-  color: #22c55e;
+  color: #4caf50;
 }
 
 .used-meta-cnt {
   font-size: 12px;
-  color: #8e8e93;
+  color: #9e9e9e;
 }
 
 /* Plain Event Row on Used Screen */
@@ -986,17 +960,18 @@ img {
 
 .btn-buy-more {
   width: 100%;
-  height: 52px;
-  border-radius: 12px;
+  height: 50px;
+  border-radius: 10px;
   border: 1.5px solid #d1d1d6;
   background: #ffffff;
   font-size: 16px;
   font-weight: 700;
   color: #000000;
-  transition: background 0.15s;
+  transition: transform 0.12s ease, background 0.15s;
 }
 
 .btn-buy-more:active {
+  transform: scale(0.985);
   background: #f2f2f7;
 }
 
