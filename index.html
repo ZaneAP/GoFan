@@ -9,8 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <!-- ==================== SCREEN 1: TICKETS ==================== -->
   <div class="screen active" id="screen-tickets">
+
     <!-- HEADER -->
     <header class="hdr">
       <button class="hdr-back" aria-label="Back">
@@ -22,8 +24,10 @@
         Transfer
       </button>
     </header>
+
     <!-- CONTENT -->
     <div class="content" id="content-tickets">
+
       <!-- Event alert -->
       <div class="alert">
         <div class="alert-body">
@@ -39,8 +43,224 @@
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><line x1="9" y1="3" x2="9" y2="15" stroke="#333" stroke-width="2" stroke-linecap="round"/><line x1="3" y1="9" x2="15" y2="9" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
+
       <!-- Available pill -->
       <div class="avail-pill">
         <div class="avail-badge">1</div>
         <span class="avail-label">Available</span>
       </div>
+
+      <!-- Ticket -->
+      <div class="tkt" id="tkt">
+        <!-- Row: title + check -->
+        <div class="tkt-top">
+          <span class="tkt-name">Wando Hoco Dance</span>
+          <button class="tkt-check" id="tkt-check" onclick="toggleTicket(event)">
+            <!-- filled by JS -->
+          </button>
+        </div>
+
+        <!-- Stub -->
+        <div class="stub" onclick="toggleTicket(event)">
+          <!-- Maroon left panel -->
+          <div class="stub-l">
+            <div class="stub-l-inner">
+              <span class="stub-admit">ADMIT ONE</span>
+              <span class="stub-desc">Wando HoCo - Start...</span>
+            </div>
+            <!-- Perforations -->
+            <div class="stub-dots"></div>
+          </div>
+          <!-- Dark right panel -->
+          <div class="stub-r">
+            <div class="stub-r-text">
+              <div class="stub-r-title">Wando Homecoming Dance</div>
+              <div class="stub-r-date">Sat. Oct 3, 2026 at 7:30 PM</div>
+            </div>
+            <img class="stub-r-logo" src="wando-logo.png" alt="W" width="50" height="50">
+          </div>
+        </div>
+
+        <div class="tkt-count">1 of 1</div>
+      </div>
+
+      <!-- Show all ticket info -->
+      <button class="show-info">
+        Show all ticket info
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <!-- Divider -->
+      <hr class="sep">
+
+      <!-- Notice -->
+      <div class="notice">
+        <h2 class="notice-h">Use your tickets onsite for entry into venue</h2>
+        <p class="notice-p">You can also print your QR codes with the Print button below. Screenshots of QR codes are accepted for entry.</p>
+      </div>
+
+      <!-- Event details -->
+      <div class="evt">
+        <h3 class="evt-h">Event details</h3>
+        <div class="evt-row">
+          <img class="evt-logo" src="wando-logo.png" alt="Wando" width="48" height="48">
+          <div class="evt-info">
+            <div class="evt-name">Wando Homecoming Dance</div>
+            <div class="evt-sub">Wando HoCo - Start Your Engines</div>
+            <div class="evt-dt">Sat, Oct 03, 2026 at 7:30 PM</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+
+    <!-- BOTTOM BAR -->
+    <div class="bot" id="bot-bar">
+      <button class="bot-use" id="bot-use" onclick="goConfirm()">Use 1 ticket</button>
+      <button class="bot-print" aria-label="Print">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      </button>
+    </div>
+
+  </div><!-- /screen-tickets -->
+
+
+  <!-- ==================== SCREEN 2: CONFIRM ==================== -->
+  <div class="screen" id="screen-confirm">
+
+    <header class="hdr">
+      <button class="hdr-back" onclick="go('screen-tickets')">
+        <svg width="11" height="20" viewBox="0 0 11 20" fill="none"><path d="M10 1L1 10l9 9" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="hdr-title">My tickets</span>
+      <span style="width:72px"></span>
+    </header>
+
+    <div class="confirm-top">
+      <div class="confirm-evt">Wando Homecoming Dance</div>
+      <div class="confirm-type"><span class="dot">●</span> Wando Hoco Dance</div>
+    </div>
+
+    <div class="confirm-mid">
+      <div class="confirm-circle">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <path d="M18 4c-1.5 0-2.8.5-3.8 1.5L7 13v11a3 3 0 003 3h2v-6a3 3 0 013-3h6a3 3 0 013 3v6h2a3 3 0 003-3V13l-7.2-7.5A5.2 5.2 0 0018 4z" fill="rgba(255,255,255,0.25)"/>
+          <circle cx="18" cy="18" r="4" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+        </svg>
+        <!-- Hand stop emoji -->
+        <span class="confirm-hand">✋</span>
+      </div>
+      <h2 class="confirm-h2">Authorized staff only</h2>
+      <p class="confirm-p">You must use <b>ONSITE</b> for entry into venue.</p>
+    </div>
+
+    <div class="confirm-bot">
+      <button class="btn-green" onclick="doUse()">Use 1 ticket</button>
+      <button class="btn-outline" onclick="go('screen-tickets')">Cancel</button>
+      <span class="confirm-fine">All redemptions final</span>
+    </div>
+
+  </div>
+
+
+  <!-- ==================== SCREEN 3: SUCCESS ==================== -->
+  <div class="screen" id="screen-success">
+
+    <div class="suc-body">
+      <div class="suc-ring">
+        <svg width="96" height="96" viewBox="0 0 96 96" fill="none">
+          <circle cx="48" cy="48" r="42" stroke="#2ecc71" stroke-width="3.5" opacity="0.25"/>
+          <circle class="suc-circle-anim" cx="48" cy="48" r="42" stroke="#2ecc71" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264"/>
+          <path class="suc-check-anim" d="M28 50 L42 64 L68 34" stroke="#2ecc71" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="65" stroke-dashoffset="65"/>
+        </svg>
+      </div>
+      <h2 class="suc-h">1 ticket used!</h2>
+      <p class="suc-evt">Wando Homecoming Dance</p>
+      <p class="suc-msg">Have fun and enjoy the event!</p>
+    </div>
+
+    <div class="suc-bottom">
+      <button class="btn-outline" onclick="go('screen-used')">Done</button>
+    </div>
+
+  </div>
+
+
+  <!-- ==================== SCREEN 4: USED ==================== -->
+  <div class="screen" id="screen-used">
+
+    <header class="hdr">
+      <button class="hdr-back" aria-label="Back">
+        <svg width="11" height="20" viewBox="0 0 11 20" fill="none"><path d="M10 1L1 10l9 9" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="hdr-title">My tickets</span>
+      <span style="width:40px"></span>
+    </header>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn" onclick="goAvail()">
+        <span class="tab-badge tab-badge-gray">0</span>
+        Available
+      </button>
+      <button class="tab-btn tab-active">
+        <span class="tab-badge tab-badge-dark">1</span>
+        Used
+      </button>
+    </div>
+
+    <div class="content">
+
+      <!-- Used ticket -->
+      <div class="tkt tkt-used">
+        <div class="tkt-top">
+          <span class="tkt-name">Wando Hoco Dance</span>
+        </div>
+        <div class="stub stub-used">
+          <div class="stub-l stub-l-used">
+            <div class="stub-l-inner">
+              <span class="stub-admit">ADMIT ONE</span>
+              <span class="stub-desc">Wando HoCo - Start...</span>
+            </div>
+            <div class="stub-dots stub-dots-used"></div>
+          </div>
+          <div class="stub-r stub-r-used">
+            <div class="stub-r-text">
+              <div class="stub-r-title">Wando Homecoming Dance</div>
+              <div class="stub-r-date">Sat. Oct 3, 2026 at 7:30 PM</div>
+            </div>
+            <img class="stub-r-logo" src="wando-logo.png" alt="W" width="50" height="50">
+          </div>
+        </div>
+        <div class="used-foot">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#27ae60" stroke-width="1.5"/><path d="M4 7.2l2 2 4-4.4" stroke="#27ae60" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span class="used-foot-txt">Used Sat, Oct 03, 7:28 PM</span>
+          <span class="used-foot-cnt">1 of 1</span>
+        </div>
+      </div>
+
+      <!-- Event details -->
+      <div class="evt">
+        <h3 class="evt-h">Event details</h3>
+        <div class="evt-row">
+          <img class="evt-logo" src="wando-logo.png" alt="Wando" width="48" height="48">
+          <div class="evt-info">
+            <div class="evt-name">Wando Homecoming Dance</div>
+            <div class="evt-sub">Wando HoCo - Start Your Engines</div>
+            <div class="evt-dt">Sat, Oct 03, 2026 at 7:30 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buymore">
+        <button class="btn-outline">Buy more tickets</button>
+      </div>
+
+      <div class="sponsor">Sponsored by <b>Smile Orthodontics</b></div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
