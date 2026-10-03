@@ -1,60 +1,57 @@
-/* ===== RESET ===== */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ============================================
+   GoFan Ticket UI — pixel-perfect recreation
+   ============================================ */
+/* --- Reset --- */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:16px;
+  background:#f2f2f7;
+  color:#000;
 }
-html {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #f2f2f7;
-  color: #1a1a1a;
+body{
+  display:flex;
+  justify-content:center;
+  min-height:100vh;
+  min-height:100dvh;
 }
-body {
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  min-height: 100dvh;
+button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+img{display:block}
+/* --- Screen shell --- */
+.screen{
+  display:none;
+  flex-direction:column;
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  min-height:100dvh;
+  background:#fff;
+  position:relative;
 }
-/* ===== SCREENS ===== */
-.screen {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-  max-width: 430px;
-  min-height: 100vh;
-  min-height: 100dvh;
-  background: #fff;
-  position: relative;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
+.screen.active{display:flex}
+/* --- Scrollable content area --- */
+.content{
+  flex:1;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
 }
-.screen.active {
-  display: flex;
+#content-tickets{
+  padding-bottom:90px;      /* room for fixed bottom bar */
 }
-/* ===== HEADER ===== */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+/* ============ HEADER ============ */
+.hdr{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:52px;
+  padding:0 16px;
+  background:#fff;
+  border-bottom:1px solid #e5e5ea;
+  flex-shrink:0;
 }
-.header-back {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-  display: flex;
-  align-items: center;
-  color: #1a1a1a;
-  border-radius: 8px;
-  -webkit-tap-highlight-color: transparent;
-}
-.header-back:active {
+.hdr-back{
+  background:none;border:none;
+  padding:8px 4px 8px 0;
