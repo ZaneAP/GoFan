@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>GoFan - My Tickets</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+  <!-- ===== SCREEN 1: MY TICKETS (Available) ===== -->
+  <div class="screen active" id="screen-tickets">
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <span class="status-time">9:42</span>
+      <div class="status-icons">
+        <span class="material-icons-outlined" style="font-size:15px">signal_cellular_alt</span>
+        <span class="material-icons-outlined" style="font-size:15px">wifi</span>
+        <span class="material-icons-outlined" style="font-size:15px">battery_full</span>
+      </div>
+    </div>
+    <!-- Header -->
+    <div class="header">
+      <button class="header-back" aria-label="Back">
+        <span class="material-icons-outlined">arrow_back</span>
+      </button>
+      <h1 class="header-title">My tickets</h1>
+      <button class="header-transfer">
+        <span class="material-icons-outlined" style="font-size:16px">swap_horiz</span>
+        Transfer
+      </button>
+    </div>
+    <!-- Tabs -->
+    <div class="tabs" id="tabs-available">
+      <button class="tab active" data-tab="available">
+        <span class="tab-icon">🎟</span> Available
+      </button>
+      <button class="tab" data-tab="used" onclick="showScreen('screen-used')">
+        <span class="tab-icon">⏱</span> Used
+      </button>
+    </div>
+    <!-- Select Buttons -->
+    <div class="select-buttons">
+      <button class="select-btn" id="btn-use-all" onclick="toggleSelectAll(true)">Use all</button>
+      <button class="select-btn" id="btn-deselect-all" onclick="toggleSelectAll(false)">Deselect all</button>
+    </div>
